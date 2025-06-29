@@ -1,9 +1,16 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./components/pages/login/LoginPage";
+import ErrorPage from "./components/pages/error/ErrorPage";
+import OrderPage from "./components/pages/order/OrderPage";
 
 export default function App() {
   return (
-    <div>
-      <LoginPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={<LoginPage />} />
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/order" element={<OrderPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
