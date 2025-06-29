@@ -7,7 +7,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={""} element={<LoginPage />} />
+        <Route path={"/"} element={<LoginPage />} />
         <Route path={"*"} element={<ErrorPage />} />
         <Route path={`/order/:username`} element={<OrderPage />} />
       </Routes>
