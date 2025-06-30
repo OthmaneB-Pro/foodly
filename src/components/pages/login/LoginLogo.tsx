@@ -13,9 +13,8 @@ export default function LoginLogo() {
 
 const LoginLogoStyled = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-weight: 700;
+  font-weight: ${theme.weights.bold};
   font-size: 110px;
   font-family: "Amatic SC";
   color: ${theme.colors.primary};
