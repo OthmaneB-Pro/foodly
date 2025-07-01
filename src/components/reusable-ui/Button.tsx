@@ -21,8 +21,8 @@ const ButtonStyled = styled.button`
   background-color: ${theme.colors.primary_burger};
   color: ${theme.colors.white};
 
-  border: 1px ${theme.colors.primary_burger};
-  border-radius: 5px;
+  border: 1px solid ${theme.colors.primary_burger};
+  border-radius: ${theme.borderRadius.round};
   margin-top: 18px;
 
   height: 53px;
@@ -30,16 +30,20 @@ const ButtonStyled = styled.button`
 
   font-size: ${theme.fonts.P0};
   font-weight: ${theme.weights.bold};
+  transition: all 0.1s ease-in-out;
   svg {
     margin-left: 10px;
     width: 15px;
     height: 15px;
   }
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: ${theme.colors.white};
     color: ${theme.colors.primary_burger};
-    border: 10px ${theme.colors.primary_burger};
+  }
+  &:active {
+    background-color: ${theme.colors.primary_burger};
+    color: ${theme.colors.white};
   }
 `;

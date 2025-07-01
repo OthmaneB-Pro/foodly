@@ -39,13 +39,13 @@ const InputValueStyled = styled.div`
   display: flex;
   align-items: center;
   padding: 18px 24px 18px 24px;
-  border-radius: 5px;
+  border-radius: ${theme.borderRadius.round};
 
-  .logo{
-    color : ${theme.colors.greyBlue};
+  .logo {
+    color: ${theme.colors.greyBlue};
     margin-right: 12px;
   }
-  input{
+  input {
     border: none;
     opacity: 50%;
     padding: 1px 2px 1px 2px;

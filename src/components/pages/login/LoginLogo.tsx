@@ -20,8 +20,7 @@ const LoginLogoStyled = styled.div`
   color: ${theme.colors.primary};
   letter-spacing: 1.5px;
   height: 200px;
-  margin-top: 80px;
-  p{
+  p {
     padding: 10px;
   }
   img {
