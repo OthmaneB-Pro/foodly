@@ -18,6 +18,12 @@ const LoginLogoStyled = styled.div`
   font-size: 110px;
   font-family: "Amatic SC";
   color: ${theme.colors.primary};
+  letter-spacing: 1.5px;
+  height: 200px;
+  margin-top: 80px;
+  p{
+    padding: 10px;
+  }
   img {
     width: 200px;
     height: 150px;
