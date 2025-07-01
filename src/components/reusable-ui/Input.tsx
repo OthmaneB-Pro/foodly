@@ -10,7 +10,7 @@ type inputType = {
   Logo: React.ReactNode;
 };
 
-export default function InputValue({
+export default function Input({
   value,
   onChange,
   placeholder,
@@ -46,6 +46,7 @@ const InputValueStyled = styled.div`
     margin-right: 12px;
   }
   input {
+    width: 300px;
     border: none;
     opacity: 50%;
     padding: 1px 2px 1px 2px;

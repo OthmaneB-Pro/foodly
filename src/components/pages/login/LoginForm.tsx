@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
-import InputValue from "../../reusable-ui/InputValue";
+import InputValue from "../../reusable-ui/Input";
 import { FaUserCircle } from "react-icons/fa";
 import Button from "../../reusable-ui/Button";
 import { IoIosArrowForward } from "react-icons/io";
