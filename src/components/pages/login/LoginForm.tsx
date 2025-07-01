@@ -6,6 +6,7 @@ import InputValue from "../../reusable-ui/InputValue";
 import { FaUserCircle } from "react-icons/fa";
 import Button from "../../reusable-ui/Button";
 import { IoIosArrowForward } from "react-icons/io";
+import FormTitle from "./FormTitle";
 
 export default function LoginForm() {
   const [username, setUsername] = useState("");
@@ -20,11 +21,16 @@ export default function LoginForm() {
   };
   return (
     <FormStyled onSubmit={handleSubmit}>
-      <h2>Bienvenue chez nous !</h2>
-      <div className="rod" />
-      <h3>Connectez-vous</h3>
+      <FormTitle />
 
-      <InputValue Logo={<FaUserCircle />} onChange={handleChange} placeholder="Entrez votre prénom" required={true} value={username} type="text" />
+      <InputValue
+        Logo={<FaUserCircle />}
+        onChange={handleChange}
+        placeholder="Entrez votre prénom"
+        required={true}
+        value={username}
+        type="text"
+      />
       <Button text="Accéder à mon espace" Logo={<IoIosArrowForward />} />
     </FormStyled>
   );
@@ -35,22 +41,7 @@ const FormStyled = styled.form`
   flex-direction: column;
   align-items: center;
   color: white;
-  
+
   font-family: "Amatic SC";
   font-weight: ${theme.weights.bold};
-
-  h2 {
-    font-size: ${theme.fonts.P5};
-  }
-  .rod {
-    height: 3px;
-    width: 400px;
-    background: #F56A2C;
-  }
-  h3 {
-    font-size: ${theme.fonts.P4};
-    margin-bottom: 18px;
-  }
-
- 
 `;
