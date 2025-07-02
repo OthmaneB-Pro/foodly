@@ -1,33 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
-import Logo from "../../reusable-ui/Logo";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { FaUserCircle } from "react-icons/fa";
 import { theme } from "../../../theme";
+import Navbar from "./navbar/Navbar";
+import Menu from "./menu/Menu";
 
 export default function OrderPage() {
-  const navigate = useNavigate();
+ 
   const { username } = useParams();
 
-  const handleClick = () => {
-    navigate(`/`);
-  };
+ 
   return (
     <OrderPageStyled>
-      <div className="navbar">
-        <div className="logo" onClick={() => window.location.reload()}>
-          <Logo />
-        </div>
-        <div className="rightNavbar">
-          <div className="user">
-            <p>
-              Hey, <span className="username"> {username}</span>{" "}
-            </p>
-            <button onClick={handleClick}>Se déconnecter</button>
-          </div>
-          <FaUserCircle className="icon" />
-        </div>
-      </div>
-      <div className="menu"></div>
+      <Navbar username={username} />
+      <Menu/>
     </OrderPageStyled>
   );
 }
