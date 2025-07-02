@@ -1,16 +1,26 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { theme } from "../../../theme";
+import Navbar from "./navbar/Navbar";
+import Menu from "./menu/Menu";
 
 export default function OrderPage() {
-  const navigate = useNavigate();
-  const {username} = useParams()
+  const { username } = useParams();
 
-  const handleClick = () => {
-    navigate(`/`);
-  };
   return (
-    <div>
-      <h1>Bonjour {username} </h1>
-      <button onClick={handleClick}>Déconnexion</button>
-    </div>
+    <OrderPageStyled>
+      <Navbar username={username} />
+      <Menu />
+    </OrderPageStyled>
   );
 }
+
+const OrderPageStyled = styled.div`
+  background-color: ${theme.colors.primary};
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+`;
