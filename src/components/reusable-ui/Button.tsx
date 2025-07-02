@@ -3,13 +3,13 @@ import { theme } from "../../theme";
 
 type ButtonType = {
   text: string;
-  Logo: React.ReactElement;
+  Icon: React.ReactElement;
 };
 
-export default function Button({ text, Logo }: ButtonType) {
+export default function Button({ text, Icon }: ButtonType) {
   return (
     <ButtonStyled>
-      {text} {Logo && Logo}
+      {text} {Icon && Icon}
     </ButtonStyled>
   );
 }

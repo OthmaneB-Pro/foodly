@@ -24,14 +24,14 @@ export default function LoginForm() {
       <FormTitle />
 
       <InputValue
-        Logo={<FaUserCircle />}
+        Icon={<FaUserCircle />}
         onChange={handleChange}
         placeholder="Entrez votre prénom"
         required={true}
         value={username}
         type="text"
       />
-      <Button text="Accéder à mon espace" Logo={<IoIosArrowForward />} />
+      <Button text="Accéder à mon espace" Icon={<IoIosArrowForward />} />
     </FormStyled>
   );
 }

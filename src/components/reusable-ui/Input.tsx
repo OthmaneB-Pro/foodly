@@ -7,7 +7,7 @@ type inputType = {
   placeholder: string;
   type: string;
   required: boolean;
-  Logo: React.ReactNode;
+  Icon: React.ReactNode;
 };
 
 export default function Input({
@@ -16,11 +16,11 @@ export default function Input({
   placeholder,
   type,
   required,
-  Logo,
+  Icon,
 }: inputType) {
   return (
     <InputValueStyled>
-      <div className="logo">{Logo && Logo}</div>
+      <div className="icon">{Icon && Icon}</div>
       <input
         value={value}
         onChange={onChange}
@@ -41,7 +41,7 @@ const InputValueStyled = styled.div`
   padding: 18px 24px 18px 24px;
   border-radius: ${theme.borderRadius.round};
 
-  .logo {
+  .icon {
     color: ${theme.colors.greyBlue};
     margin-right: 12px;
   }
