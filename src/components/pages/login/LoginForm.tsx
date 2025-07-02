@@ -31,7 +31,7 @@ export default function LoginForm() {
         value={username}
         type="text"
       />
-      <Button text="Accéder à mon espace" Icon={<IoIosArrowForward />} />
+      <Button label="Accéder à mon espace" Icon={<IoIosArrowForward />} />
     </FormStyled>
   );
 }
@@ -45,3 +45,4 @@ const FormStyled = styled.form`
   font-family: "Amatic SC";
   font-weight: ${theme.weights.bold};
 `;
+

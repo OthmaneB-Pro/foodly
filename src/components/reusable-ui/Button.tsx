@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 type ButtonType = {
-  text: string;
+  label: string;
   Icon: React.ReactElement;
 };
 
-export default function Button({ text, Icon }: ButtonType) {
+export default function Button({ label, Icon }: ButtonType) {
   return (
     <ButtonStyled>
-      {text} {Icon && Icon}
+      {label} {Icon && Icon}
     </ButtonStyled>
   );
 }
