@@ -1,7 +1,7 @@
 import { FaUserCircle } from "react-icons/fa";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import UserText from "./UserText";
+import UserText from "./Profile";
 
 type NavbarType = {
   username?: string;
