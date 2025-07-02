@@ -40,6 +40,7 @@ const OrderPageStyled = styled.div`
   font-family: "Open Sans", sans-serif;
 
   .logo {
+    width: 0px;
     margin-left: 20px;
     transform: scale(0.4);
   }
