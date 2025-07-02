@@ -15,13 +15,15 @@ export default function OrderPage() {
     <OrderPageStyled>
       <div className="navbar">
         <div className="logo">
-        <Logo />
-      </div>
-        <div>
-          <h1>Hey, {username} </h1>
-          <button onClick={handleClick}>Se déconnecter</button>
+          <Logo />
         </div>
-        <FaUserCircle />
+        <div className="rightNavbar">
+          <div className="user">
+            <p>Hey, {username} </p>
+            <button onClick={handleClick}>Se déconnecter</button>
+          </div>
+          <FaUserCircle className="icon" />
+        </div>
       </div>
       <div className="menu"></div>
     </OrderPageStyled>
@@ -35,9 +37,10 @@ const OrderPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 
-  .logo{
+  .logo {
+    margin-left: 20px;
     transform: scale(0.4);
   }
 
@@ -47,12 +50,52 @@ const OrderPageStyled = styled.div`
     height: 98px;
     border-radius: 15px 15px 0px 0px;
     z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .rightNavbar {
+      margin-right: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: ${theme.colors.greyBlue};
+      width: 120px;
+      .user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+      }
+      p {
+        font-size: 14px;
+        margin-bottom: 4px;
+        margin-top: 0px;
+      }
+      button {
+        background: none;
+        border: none;
+        font-size: 10px;
+        padding: 0;
+        color: ${theme.colors.greyBlue};
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 4px;
+        }
+      }
+      .icon {
+        width: 36px;
+        height: 36px;
+      }
+    }
   }
   .menu {
     background: ${theme.colors.background_white};
     width: 1400px;
     height: 80vh;
     border-radius: 0px 0px 15px 15px;
-    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset ;
+    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   }
 `;
