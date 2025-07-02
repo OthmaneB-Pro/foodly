@@ -14,12 +14,14 @@ export default function OrderPage() {
   return (
     <OrderPageStyled>
       <div className="navbar">
-        <div className="logo">
+        <div className="logo" onClick={() => window.location.reload()}>
           <Logo />
         </div>
         <div className="rightNavbar">
           <div className="user">
-            <p>Hey, {username} </p>
+            <p>
+              Hey, <span className="username"> {username}</span>{" "}
+            </p>
             <button onClick={handleClick}>Se déconnecter</button>
           </div>
           <FaUserCircle className="icon" />
@@ -43,6 +45,7 @@ const OrderPageStyled = styled.div`
     width: 0px;
     margin-left: 20px;
     transform: scale(0.4);
+    cursor: pointer;
   }
 
   .navbar {
@@ -68,6 +71,11 @@ const OrderPageStyled = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
+
+        .username {
+          color: ${theme.colors.primary};
+          font-weight: ${theme.weights.bold};
+        }
       }
       p {
         font-size: 14px;
@@ -83,7 +91,7 @@ const OrderPageStyled = styled.div`
         cursor: pointer;
         &:hover {
           text-decoration: underline;
-          text-underline-offset: 4px;
+          text-underline-offset: 3px;
         }
       }
       .icon {
