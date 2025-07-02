@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import LoginForm from "./LoginForm";
-import LoginLogo from "../../reusable-ui/Logo";
+import Logo from "../../reusable-ui/Logo";
 
 export default function LoginPage() {
   return (
     <LoginPageStyled>
-      <LoginLogo />
+      <Logo />
       <LoginForm />
     </LoginPageStyled>
   );

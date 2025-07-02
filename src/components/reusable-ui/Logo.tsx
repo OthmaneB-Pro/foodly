@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function LoginLogo() {
+export default function Logo() {
   return (
-    <LoginLogoStyled>
+    <LogoStyled>
       <p>CRAZEE</p>
-      <img src="img/logo-orange.png" alt="burger-logo" />
+      <img src="../img/logo-orange.png" alt="burger-logo" />
       <p>BURGER</p>
-    </LoginLogoStyled>
+    </LogoStyled>
   );
 }
 
-const LoginLogoStyled = styled.div`
+const LogoStyled = styled.div`
   display: flex;
   align-items: center;
   font-weight: ${theme.weights.bold};
