@@ -23,4 +23,5 @@ const OrderPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   font-family: "Open Sans", sans-serif;
+  overflow-y: hidden;
 `;

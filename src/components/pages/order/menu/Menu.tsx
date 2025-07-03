@@ -73,15 +73,17 @@ export default function Menu() {
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
   width: 1400px;
-  height: 80vh;
+  max-height: 80vh;
   border-radius: 0px 0px 15px 15px;
   box-shadow: ${theme.shadows.strong};
+  overflow-y: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .card-container {
-    margin-top: 50px;
-    margin-left: 92.5px;
-    margin-right: 92.5px;
-
+    padding: 50px 92.5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 85px;
