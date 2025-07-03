@@ -2,17 +2,23 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths.js";
+import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js";
 
 export default function Menu() {
   return (
     <MenuStyled>
       <div className="card-container">
-        <Card
-          src="/img/burger-bacon-egg.png"
-          alt="burger-bacon-egg"
-          title="Burger Vegee"
-          price={formatPrice(5.6)}
-        />
+        {fakeMenu2.length > 0
+          ? fakeMenu2.map((fakeData) => (
+              <Card
+                key={fakeData.id}
+                src={fakeData.imageSource}
+                alt={fakeData.title}
+                title={fakeData.title}
+                price={formatPrice(fakeData.price)}
+              />
+            ))
+          : "C'est vide"}
       </div>
     </MenuStyled>
   );
