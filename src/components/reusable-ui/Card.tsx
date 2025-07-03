@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
+import Button from "./Button";
 
 type CardType = {
   src: string;
@@ -16,7 +17,7 @@ export default function Card({ src, alt, title, price }: CardType) {
         <h2>{title}</h2>
         <div className="price-button">
           <p>{price}</p>
-          <button>Ajouter</button>
+          <Button label="Ajouter" />
         </div>
       </div>
     </CardStyled>
@@ -41,7 +42,6 @@ const CardStyled = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-
     padding: 0px 5px 5px 5px;
 
     h2 {
@@ -51,6 +51,9 @@ const CardStyled = styled.div`
       line-height: 100%;
       color: ${theme.colors.dark};
       height: 46px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 190px;
     }
 
     .price-button {
@@ -67,11 +70,8 @@ const CardStyled = styled.div`
       button {
         width: 95px;
         height: 38px;
-        border-radius: 5px;
-        border: 1px solid #ff9f1b;
-        background-color: ${theme.colors.primary_burger};
-        color: white;
-        cursor: pointer;
+        margin: 0;
+        font-size: 11px;
       }
     }
   }

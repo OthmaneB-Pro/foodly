@@ -3,13 +3,16 @@ import { theme } from "../../../../theme";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths.js";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js";
+import { useState } from "react";
 
 export default function Menu() {
+  const [menu, setMenu] = useState(fakeMenu2);
+
   return (
     <MenuStyled>
       <div className="card-container">
-        {fakeMenu2.length > 0
-          ? fakeMenu2.map((fakeData) => (
+        {menu.length > 0
+          ? menu.map((fakeData) => (
               <Card
                 key={fakeData.id}
                 src={fakeData.imageSource}
