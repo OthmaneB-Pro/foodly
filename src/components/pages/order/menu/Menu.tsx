@@ -4,21 +4,68 @@ import { theme } from "../../../../theme";
 export default function Menu() {
   return (
     <MenuStyled>
-      <div className="card">
-        <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
-        <div className="text">
-          <h2>BURGER SMOKE BBQ</h2>
-          <div className="price-button">
-            <p>5,60€</p>
-            <button>Ajouter</button>
+      <div className="card-container">
+        <div className="card">
+          <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
+          <div className="text">
+            <h2>BURGER SMOKE BBQ</h2>
+            <div className="price-button">
+              <p>5,60€</p>
+              <button>Ajouter</button>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
+          <div className="text">
+            <h2>BURGER SMOKE BBQ</h2>
+            <div className="price-button">
+              <p>5,60€</p>
+              <button>Ajouter</button>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
+          <div className="text">
+            <h2>BURGER SMOKE BBQ</h2>
+            <div className="price-button">
+              <p>5,60€</p>
+              <button>Ajouter</button>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
+          <div className="text">
+            <h2>BURGER SMOKE BBQ</h2>
+            <div className="price-button">
+              <p>5,60€</p>
+              <button>Ajouter</button>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
+          <div className="text">
+            <h2>BURGER SMOKE BBQ</h2>
+            <div className="price-button">
+              <p>5,60€</p>
+              <button>Ajouter</button>
+            </div>
+          </div>
+        </div>
+        <div className="card">
+          <img src="/img/burger-bacon-egg.png" alt="burger-bacon-egg" />
+          <div className="text">
+            <h2>BURGER SMOKE BBQ</h2>
+            <div className="price-button">
+              <p>5,60€</p>
+              <button>Ajouter</button>
+            </div>
           </div>
         </div>
       </div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
     </MenuStyled>
   );
 }
@@ -30,10 +77,16 @@ const MenuStyled = styled.div`
   border-radius: 0px 0px 15px 15px;
   box-shadow: ${theme.shadows.strong};
 
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: repeat(4, 1fr);
+  .card-container {
+    margin-top: 50px;
+    margin-left: 92.5px;
+    margin-right: 92.5px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 85px;
+    row-gap: 60px;
+  }
 
   .card {
     width: 240px;
@@ -73,6 +126,9 @@ const MenuStyled = styled.div`
         position: relative;
         bottom: 20px;
 
+        p {
+          color: ${theme.colors.primary};
+        }
         button {
           width: 95px;
           height: 38px;
