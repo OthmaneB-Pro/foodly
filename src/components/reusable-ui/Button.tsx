@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 
 type ButtonType = {
   label: string;
-  Icon: React.ReactElement;
+  Icon?: React.ReactElement;
 };
 
 export default function Button({ label, Icon }: ButtonType) {
