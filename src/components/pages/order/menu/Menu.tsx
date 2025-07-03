@@ -2,7 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 
 export default function Menu() {
-  return <MenuStyled></MenuStyled>;
+  return <MenuStyled>
+    <div>Hello</div>
+    <div>Hello</div>
+    <div>Hello</div>
+    <div>Hello</div>
+    <div>Hello</div>
+    <div>Hello</div>
+  </MenuStyled>;
 }
 
 const MenuStyled = styled.div`
@@ -11,4 +18,9 @@ const MenuStyled = styled.div`
   height: 80vh;
   border-radius: 0px 0px 15px 15px;
   box-shadow: ${theme.shadows.strong};
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
 `;
