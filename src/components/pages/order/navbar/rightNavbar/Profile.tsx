@@ -2,26 +2,26 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-type UserTextType = {
+type ProfileType = {
   username?: string;
 };
-export default function UserText({ username }: UserTextType) {
+export default function Profile({ username }: ProfileType) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/`);
   };
 
   return (
-    <UserTextStyled>
+    <ProfileStyled>
       <p>
         Hey, <span>{username}</span>
       </p>
       <button onClick={handleClick}>Se déconnecter</button>
-    </UserTextStyled>
+    </ProfileStyled>
   );
 }
 
-const UserTextStyled = styled.div`
+const ProfileStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
