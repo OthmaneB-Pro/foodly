@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Profile from "./Profile";
 import ToggleButton from "./ToggleButton";
-import { toast } from "react-toastify";
 import { useState } from "react";
+import { toastNotification } from "./toastNotification";
 
 type NavbarType = {
   username?: string;
@@ -12,23 +12,14 @@ type NavbarType = {
 
 export default function RightNavbar({ username }: NavbarType) {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
-  const toastNotification = () =>
-    toast.info("Mode admin activé", {
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+
   const handleToggle = () => {
     setIsModeAdmin(!isModeAdmin);
     if (!isModeAdmin) {
       toastNotification();
     }
   };
+
   return (
     <RightNavbarStyled>
       <ToggleButton
