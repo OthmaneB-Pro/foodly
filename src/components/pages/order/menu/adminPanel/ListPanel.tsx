@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { MenuContext } from "../../../../../context/MenuContext";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import ButtonPanel from "./ButtonPanel";
+import { buttonLists } from "./buttonLists";
 
 type ListPanelType = {
   isPanelOpen: boolean;
@@ -27,28 +26,18 @@ export default function ListPanel({
   };
   return (
     <ListPanelStyled isPanelOpen={isPanelOpen}>
-      <button
-        className={!isPanelOpen ? "dark" : "white"}
-        onClick={handleTogglePanel}
-      >
-        {isPanelOpen ? <FiChevronDown /> : <FiChevronUp />}
-      </button>
-
-      <button
-        onClick={() => handleSelectMode("add")}
-        className={mode === "add" ? "dark" : "white"}
-      >
-        <AiOutlinePlus />
-        <span>Ajouter un produit</span>
-      </button>
-
-      <button
-        onClick={() => handleSelectMode("edit")}
-        className={mode === "edit" ? "dark" : "white"}
-      >
-        <MdModeEditOutline />
-        <span>Modifier un produit</span>
-      </button>
+      {buttonLists(isPanelOpen, mode, {
+        togglePanel: handleTogglePanel,
+        selectMode: handleSelectMode,
+      }).map((buttonElements, index) => (
+        <ButtonPanel
+          key={index}
+          label={buttonElements.label}
+          Icon={buttonElements.Icon}
+          className={buttonElements.className}
+          onClick={buttonElements.onClick}
+        />
+      ))}
     </ListPanelStyled>
   );
 }
@@ -74,26 +63,5 @@ const ListPanelStyled = styled.div<{ isPanelOpen: boolean }>`
     background: ${theme.colors.background_dark};
     color: ${theme.colors.white};
     border: 1px solid ${theme.colors.background_dark};
-  }
-  button {
-    height: 43px;
-    border-radius: 5px 5px 0px 0px;
-    border-bottom: none;
-    padding: 13px 22px 13px 22px;
-    display: flex;
-    cursor: pointer;
-    box-shadow: 0px -6px 8px -2px #0000001a;
-
-    span {
-      margin-left: 13px;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    svg {
-      width: 16px;
-      height: 16px;
-    }
   }
 `;
