@@ -6,54 +6,55 @@ import { theme } from "../../../../theme";
 import { useState } from "react";
 
 export default function AdminPanel() {
-  const [isButtonOpen, setIsButtonOpen] = useState(false);
-  const [isButton2Open, setIsButton2Open] = useState(true);
-  const [isButton3Open, setIsButton3Open] = useState(false);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [mode, setMode] = useState<"add" | "edit">("add");
 
-  const handleClick = () => {
-    setIsButton2Open(true);
-    setIsButton3Open(false);
-    setIsButtonOpen(true);
+  const handleTogglePanel = () => {
+    setIsPanelOpen(!isPanelOpen);
   };
-  const handleClick2 = () => {
-    setIsButton3Open(true);
-    setIsButton2Open(false);
-    setIsButtonOpen(true);
+
+  const handleSelectMode = (selectedMode: "add" | "edit") => {
+    setMode(selectedMode);
+    setIsPanelOpen(true);
   };
+
   return (
-    <AdminPanelStyled>
+    <AdminPanelStyled isPanelOpen={isPanelOpen}>
       <div className="button">
         <button
-          className={isButtonOpen ? "white" : "dark"}
-          onClick={() => setIsButtonOpen(!isButtonOpen)}
+          className={!isPanelOpen ? "dark" : "white"}
+          onClick={handleTogglePanel}
         >
-          {isButtonOpen ? <FiChevronDown /> : <FiChevronUp />}
+          {isPanelOpen ? <FiChevronDown /> : <FiChevronUp />}
         </button>
+
         <button
-          onClick={handleClick}
-          className={isButton2Open ? "dark" : "white"}
+          onClick={() => handleSelectMode("add")}
+          className={mode === "add" ? "dark" : "white"}
         >
           <AiOutlinePlus />
           <span>Ajouter un produit</span>
         </button>
+
         <button
-          onClick={handleClick2}
-          className={isButton3Open ? "dark" : "white"}
+          onClick={() => handleSelectMode("edit")}
+          className={mode === "edit" ? "dark" : "white"}
         >
-          <MdModeEditOutline /> <span>Modifier un produit</span>
+          <MdModeEditOutline />
+          <span>Modifier un produit</span>
         </button>
       </div>
 
-      {isButtonOpen && (
+      {isPanelOpen && (
         <div className="bloc">
-          {isButton2Open ? "Ajouter un Produit" : "Modifier un produit"}
+          {mode === "add" ? "Ajouter un produit" : "Modifier un produit"}
         </div>
       )}
     </AdminPanelStyled>
   );
 }
 
-const AdminPanelStyled = styled.div`
+const AdminPanelStyled = styled.div<{ isPanelOpen: boolean }>`
   position: sticky;
   bottom: 0;
 
@@ -73,6 +74,12 @@ const AdminPanelStyled = styled.div`
     background: ${theme.colors.white};
     color: ${theme.colors.greySemiDark};
     border: 1px solid ${theme.colors.greyLight};
+    border-bottom: ${(props) =>
+      props.isPanelOpen && "2px solid" + theme.colors.greyLight};
+
+    &:hover {
+      border-bottom: 2px solid white;
+    }
   }
 
   .dark {
