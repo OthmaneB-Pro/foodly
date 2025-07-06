@@ -2,12 +2,16 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import CardContainer from "./CardContainer.js";
 import AdminPanel from "./AdminPanel.js";
+import { useContext } from "react";
+import { MenuContext } from "../../../../context/MenuContext.js";
 
 export default function Menu() {
+  const { isAdmin } = useContext(MenuContext);
+
   return (
     <MenuStyled>
       <CardContainer />
-      <AdminPanel/>
+      {isAdmin && <AdminPanel />}
     </MenuStyled>
   );
 }
