@@ -10,7 +10,7 @@ export default function Menu() {
     <MenuStyled>
       <CardContainer />
       <div className="adminPanel">
-        <button>
+        <button className="first">
           <FiChevronUp />
         </button>
         <button>
@@ -47,6 +47,10 @@ const MenuStyled = styled.div`
     display: flex;
     gap: 1px;
 
+    .first{
+        background: ${theme.colors.background_dark};
+        color: ${theme.colors.white};
+      }
     button {
       height: 43px;
       border-radius: 5px 5px 0px 0px;
@@ -60,6 +64,7 @@ const MenuStyled = styled.div`
       cursor: pointer;
       box-shadow: 0px -6px 8px -2px #0000001a;
 
+      
       span {
         margin-left: 13px;
 
