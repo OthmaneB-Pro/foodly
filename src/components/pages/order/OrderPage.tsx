@@ -9,10 +9,14 @@ import { MenuContext } from "../../../context/MenuContext";
 export default function OrderPage() {
   const { username } = useParams();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [mode, setMode] = useState<"add" | "edit">("add");
 
   const MenuContextValue = {
-    isAdmin, setIsAdmin,
-  }
+    isAdmin,
+    setIsAdmin,
+    mode,
+    setMode,
+  };
 
   return (
     <MenuContext.Provider value={MenuContextValue}>

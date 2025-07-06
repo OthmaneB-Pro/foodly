@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import CardContainer from "./CardContainer.js";
-import AdminPanel from "./AdminPanel.js";
+import AdminPanel from "./adminPanel/AdminPanel.js";
 import { useContext } from "react";
 import { MenuContext } from "../../../../context/MenuContext.js";
 

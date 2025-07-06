@@ -2,12 +2,13 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
-import { theme } from "../../../../theme";
-import { useState } from "react";
+import { theme } from "../../../../../theme";
+import { useContext, useState } from "react";
+import { MenuContext } from "../../../../../context/MenuContext";
 
 export default function AdminPanel() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [mode, setMode] = useState<"add" | "edit">("add");
+  const { mode, setMode } = useContext(MenuContext);
 
   const handleTogglePanel = () => {
     setIsPanelOpen(!isPanelOpen);
