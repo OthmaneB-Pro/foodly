@@ -3,19 +3,20 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Profile from "./Profile";
 import ToggleButton from "./ToggleButton";
-import { useState } from "react";
+import { useContext } from "react";
 import { toastNotification } from "./toastNotification";
+import { MenuContext } from "../../../../../context/MenuContext";
 
 type NavbarType = {
   username?: string;
 };
 
 export default function RightNavbar({ username }: NavbarType) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const { isAdmin, setIsAdmin } = useContext(MenuContext);
 
   const handleToggle = () => {
-    setIsModeAdmin(!isModeAdmin);
-    if (!isModeAdmin) {
+    setIsAdmin(!isAdmin);
+    if (!isAdmin) {
       toastNotification();
     }
   };
@@ -26,7 +27,7 @@ export default function RightNavbar({ username }: NavbarType) {
         labelIfUnchecked="Activer le mode Admin"
         labelIfChecked="Désactiver le mode admin"
         onToggle={handleToggle}
-        isChecked={isModeAdmin}
+        isChecked={isAdmin}
       />
       <div className="profile">
         <Profile username={username} />

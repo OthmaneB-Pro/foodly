@@ -7,40 +7,48 @@ import { useState } from "react";
 
 export default function AdminPanel() {
   const [isButtonOpen, setIsButtonOpen] = useState(false);
-  const [isButton2Open, setIsButton2Open] = useState(false);
+  const [isButton2Open, setIsButton2Open] = useState(true);
   const [isButton3Open, setIsButton3Open] = useState(false);
 
   const handleClick = () => {
-    setIsButton2Open(true)
-    setIsButton3Open(false)
-    setIsButtonOpen(true)
-  }
+    setIsButton2Open(true);
+    setIsButton3Open(false);
+    setIsButtonOpen(true);
+  };
   const handleClick2 = () => {
-    setIsButton3Open(true)
-    setIsButton2Open(false)
-    setIsButtonOpen(true)
-  }
+    setIsButton3Open(true);
+    setIsButton2Open(false);
+    setIsButtonOpen(true);
+  };
   return (
     <AdminPanelStyled>
-      <button
-        className={isButtonOpen ? "white" : "dark"}
-        onClick={() => setIsButtonOpen(!isButtonOpen)}
-      >
-        {isButtonOpen ? <FiChevronDown /> : <FiChevronUp />}
-      </button>
-      <button
-        onClick={handleClick}
-        className={isButton2Open ? "dark" : "white"}
-      >
-        <AiOutlinePlus />
-        <span>Ajouter un produit</span>
-      </button>
-      <button
-        onClick={handleClick2}
-        className={isButton3Open ? "dark" : "white"}
-      >
-        <MdModeEditOutline /> <span>Modifier un produit</span>
-      </button>
+      <div className="button">
+        <button
+          className={isButtonOpen ? "white" : "dark"}
+          onClick={() => setIsButtonOpen(!isButtonOpen)}
+        >
+          {isButtonOpen ? <FiChevronDown /> : <FiChevronUp />}
+        </button>
+        <button
+          onClick={handleClick}
+          className={isButton2Open ? "dark" : "white"}
+        >
+          <AiOutlinePlus />
+          <span>Ajouter un produit</span>
+        </button>
+        <button
+          onClick={handleClick2}
+          className={isButton3Open ? "dark" : "white"}
+        >
+          <MdModeEditOutline /> <span>Modifier un produit</span>
+        </button>
+      </div>
+
+      {isButtonOpen && (
+        <div className="bloc">
+          {isButton2Open ? "Ajouter un Produit" : "Modifier un produit"}
+        </div>
+      )}
     </AdminPanelStyled>
   );
 }
@@ -48,11 +56,19 @@ export default function AdminPanel() {
 const AdminPanelStyled = styled.div`
   position: sticky;
   bottom: 0;
-  padding-left: 70px;
-  display: flex;
-  gap: 1px;
 
-  
+  .bloc {
+    height: 210px;
+    background-color: white;
+    border-top: 1px solid #e4e5e9;
+    box-shadow: 0px -6px 8px -2px #0000001a;
+    padding: 20px;
+  }
+  .button {
+    padding-left: 70px;
+    display: flex;
+    gap: 1px;
+  }
   .white {
     background: ${theme.colors.white};
     color: ${theme.colors.greySemiDark};
