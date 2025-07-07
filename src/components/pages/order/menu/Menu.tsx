@@ -1,28 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import Card from "../../../reusable-ui/Card";
-import { formatPrice } from "../../../../utils/maths.js";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu.js";
-import { useState } from "react";
+import CardContainer from "./CardContainer.js";
+import AdminPanel from "./adminPanel/AdminPanel.js";
+import { useContext } from "react";
+import { MenuContext } from "../../../../context/MenuContext.js";
 
 export default function Menu() {
-  const [menu, setMenu] = useState(fakeMenu2);
+  const { isAdmin } = useContext(MenuContext);
 
   return (
     <MenuStyled>
-      <div className="card-container">
-        {menu.length > 0
-          ? menu.map((fakeData) => (
-              <Card
-                key={fakeData.id}
-                src={fakeData.imageSource}
-                alt={fakeData.title}
-                title={fakeData.title}
-                price={formatPrice(fakeData.price)}
-              />
-            ))
-          : "C'est vide"}
-      </div>
+      <CardContainer />
+      {isAdmin && <AdminPanel />}
     </MenuStyled>
   );
 }
@@ -36,15 +25,9 @@ const MenuStyled = styled.div`
   box-shadow: ${theme.shadows.strong};
   overflow-y: auto;
   scrollbar-width: none;
+  position: relative;
+  z-index: 1;
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  .card-container {
-    padding: 50px 92.5px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 85px;
-    row-gap: 60px;
   }
 `;
