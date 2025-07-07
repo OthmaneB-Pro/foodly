@@ -1,17 +1,32 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
+import { TiDelete } from "react-icons/ti";
 
 type CardType = {
   src: string;
   alt: string;
   title: string;
   price: string;
+  onDelete: () => void;
+  isAdmin: boolean;
 };
 
-export default function Card({ src, alt, title, price }: CardType) {
+export default function Card({
+  src,
+  alt,
+  title,
+  price,
+  onDelete,
+  isAdmin,
+}: CardType) {
   return (
     <CardStyled>
+      {isAdmin && (
+        <button onClick={onDelete} className="delete-button">
+          <TiDelete />
+        </button>
+      )}
       <img src={src} alt={alt} />
       <div className="text">
         <h2>{title}</h2>
@@ -30,11 +45,37 @@ const CardStyled = styled.div`
   border-radius: 15px;
   background-color: ${theme.colors.white};
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  position: relative;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .delete-button {
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 15px;
+    left: 195px;
+    padding: 0;
+
+    svg {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      color: #ffa01b;
+
+      &:hover {
+        color: #e25549;
+      }
+    }
+  }
 
   .text {
     width: 190px;
