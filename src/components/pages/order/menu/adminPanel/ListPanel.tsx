@@ -3,7 +3,8 @@ import { MenuContext } from "../../../../../context/MenuContext";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import ButtonPanel from "./ButtonPanel";
-import { buttonLists } from "./buttonLists";
+import { getButtonLists } from "./getButtonLists";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 type ListPanelType = {
   isPanelOpen: boolean;
@@ -24,18 +25,24 @@ export default function ListPanel({
     setMode(selectedMode);
     setIsPanelOpen(true);
   };
+
+  const buttons = getButtonLists(mode, handleSelectMode);
+
   return (
     <ListPanelStyled isPanelOpen={isPanelOpen}>
-      {buttonLists(isPanelOpen, mode, {
-        togglePanel: handleTogglePanel,
-        selectMode: handleSelectMode,
-      }).map((buttonElements, index) => (
+      <ButtonPanel
+        Icon={isPanelOpen ? <FiChevronDown /> : <FiChevronUp />}
+        className={!isPanelOpen ? "dark" : "white"}
+        onClick={handleTogglePanel}
+      />
+
+      {buttons.map((btn, index) => (
         <ButtonPanel
           key={index}
-          label={buttonElements.label}
-          Icon={buttonElements.Icon}
-          className={buttonElements.className}
-          onClick={buttonElements.onClick}
+          label={btn.label}
+          Icon={btn.Icon}
+          className={btn.className}
+          onClick={btn.onClick}
         />
       ))}
     </ListPanelStyled>
