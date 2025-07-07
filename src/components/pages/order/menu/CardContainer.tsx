@@ -9,17 +9,21 @@ export default function CardContainer() {
   const [menu, setMenu] = useState(fakeMenu2);
   const { isAdmin } = useContext(MenuContext);
 
+  const handleDelete = (idProduct : number) =>{
+    const deleteProduct = menu.filter((product) =>  product.id !== idProduct)
+    setMenu(deleteProduct)
+  }
   return (
     <CardContainerStyled>
       {menu.length > 0
-        ? menu.map((fakeData) => (
+        ? menu.map((product) => (
             <Card
-              key={fakeData.id}
-              src={fakeData.imageSource}
-              alt={fakeData.title}
-              title={fakeData.title}
-              price={formatPrice(fakeData.price)}
-              onDelete={() => {}}
+              key={product.id}
+              src={product.imageSource}
+              alt={product.title}
+              title={product.title}
+              price={formatPrice(product.price)}
+              onDelete={() => handleDelete(product.id)}
               isAdmin={isAdmin}
             />
           ))
