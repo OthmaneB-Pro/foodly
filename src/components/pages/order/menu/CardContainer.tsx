@@ -1,33 +1,31 @@
-import { useContext, useState } from "react";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
+import { useContext } from "react";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths";
 import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
 
 export default function CardContainer() {
-  const [menu, setMenu] = useState(fakeMenu2);
-  const { isAdmin } = useContext(MenuContext);
+  const { menu, setMenu, isAdmin } = useContext(MenuContext);
 
-  const handleDelete = (idProduct : number) =>{
-    const deleteProduct = menu.filter((product) =>  product.id !== idProduct)
-    setMenu(deleteProduct)
-  }
+  const handleDelete = (idProduct: number) => {
+    const deleteProduct = menu.filter((product) => product.id !== idProduct);
+    setMenu(deleteProduct);
+  };
   return (
     <CardContainerStyled>
-      {menu.length > 0
-        ? menu.map((product) => (
-            <Card
-              key={product.id}
-              src={product.imageSource}
-              alt={product.title}
-              title={product.title}
-              price={formatPrice(product.price)}
-              onDelete={() => handleDelete(product.id)}
-              isAdmin={isAdmin}
-            />
-          ))
-        : "C'est vide"}
+      {menu.length > 0 && (
+        menu.map((product) => (
+          <Card
+            key={product.id}
+            src={product.imageSource}
+            alt={product.title}
+            title={product.title}
+            price={formatPrice(product.price)}
+            onDelete={() => handleDelete(product.id)}
+            isAdmin={isAdmin}
+          />
+        ))
+      )}
     </CardContainerStyled>
   );
 }
