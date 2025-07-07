@@ -13,7 +13,7 @@ export default function CardContainer() {
   };
   return (
     <CardContainerStyled>
-      {menu.length > 0 && (
+      {menu.length > 0 &&
         menu.map((product) => (
           <Card
             key={product.id}
@@ -24,8 +24,7 @@ export default function CardContainer() {
             onDelete={() => handleDelete(product.id)}
             isAdmin={isAdmin}
           />
-        ))
-      )}
+        ))}
     </CardContainerStyled>
   );
 }

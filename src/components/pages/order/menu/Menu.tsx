@@ -12,11 +12,13 @@ export default function Menu() {
 
   return (
     <MenuStyled>
-      {menu.length > 0 ? <CardContainer /> : isAdmin ? (
-              <EmptyAdmin />
-            ) : (
-              <EmptyCustomer />
-            )}
+      {menu.length > 0 ? (
+        <CardContainer />
+      ) : isAdmin ? (
+        <EmptyAdmin />
+      ) : (
+        <EmptyCustomer />
+      )}
       {isAdmin && <AdminPanel />}
     </MenuStyled>
   );

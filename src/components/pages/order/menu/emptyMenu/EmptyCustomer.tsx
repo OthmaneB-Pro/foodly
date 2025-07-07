@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function EmptyCustomer() {
   return (
     <EmptyStyled>
-      <p>Victime de notre succès ! :D</p>
+      <p className="title">Victime de notre succès ! :D</p>
       <p>De nouvelles recettes sont en cours de préparation.</p>
       <p>À très vite !</p>
     </EmptyStyled>
@@ -18,10 +18,13 @@ const EmptyStyled = styled.div`
   width: 1400px;
   height: 85vh;
 
-  p{
-    font-family: 'Amatic SC';
-    font-style: bold;
+  color: #747b91;
+  .title {
+    font-weight: 700;
+  }
+  p {
+    font-family: "Amatic SC";
     font-size: 36px;
-
+    margin: 21px;
   }
 `;
