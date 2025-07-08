@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { MenuType } from "../fakeData/menuType";
+import type { MenuType } from "../fakeData/MenuType";
 
 type MenuContextType = {
   isAdmin: boolean;

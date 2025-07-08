@@ -34,5 +34,5 @@ const CardContainerStyled = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 85px;
   row-gap: 60px;
-  height: 85vh;
+  min-height: 85vh;
 `;

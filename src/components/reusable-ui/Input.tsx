@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 type inputType = {
-  value: string;
+  value: string | number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   type: string;
   required?: boolean;
   Icon: React.ReactNode;
   className?: string;
+  name?: string;
 };
 
 export default function Input({
@@ -19,6 +20,7 @@ export default function Input({
   required,
   Icon,
   className,
+  name,
 }: inputType) {
   return (
     <InputValueStyled className={className}>
@@ -28,6 +30,7 @@ export default function Input({
         onChange={onChange}
         placeholder={placeholder}
         type={type}
+        name={name}
         required={required}
       />
     </InputValueStyled>
