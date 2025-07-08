@@ -6,8 +6,9 @@ type inputType = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   type: string;
-  required: boolean;
+  required?: boolean;
   Icon: React.ReactNode;
+  className?: string;
 };
 
 export default function Input({
@@ -17,9 +18,10 @@ export default function Input({
   type,
   required,
   Icon,
+  className,
 }: inputType) {
   return (
-    <InputValueStyled>
+    <InputValueStyled className={className}>
       <div className="icon">{Icon && Icon}</div>
       <input
         value={value}
