@@ -8,8 +8,7 @@ export default function CardContainer() {
   const { menu, setMenu, isAdmin } = useContext(MenuContext);
 
   const handleDelete = (idProduct: number) => {
-    const deleteProduct = menu.filter((product) => product.id !== idProduct);
-    setMenu(deleteProduct);
+    setMenu(menu.filter((product) => product.id !== idProduct));
   };
   return (
     <CardContainerStyled>
@@ -35,4 +34,5 @@ const CardContainerStyled = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 85px;
   row-gap: 60px;
+  height: 85vh;
 `;
