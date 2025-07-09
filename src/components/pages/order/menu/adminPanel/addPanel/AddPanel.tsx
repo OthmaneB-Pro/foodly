@@ -1,15 +1,15 @@
 import { FaHamburger } from "react-icons/fa";
 import Input from "../../../../../reusable-ui/Input";
-import Button from "../../../../../reusable-ui/Button";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import { FiCheck } from "react-icons/fi";
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { MenuContext } from "../../../../../../context/MenuContext";
 import type { MenuType } from "../../../../../../fakeData/MenuType";
+import ButtonText from "./ButtonText";
 
 export default function AddPanel() {
+  const [isSubmit, setIsSubmit] = useState(false);
   const [inputValues, setInputValues] = useState<MenuType>({
     id: Date.now(),
     title: "",
@@ -28,6 +28,13 @@ export default function AddPanel() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newMenu = [inputValues, ...menu];
+    if (inputValues.imageSource.length === 0) {
+      inputValues.imageSource = "../img/coming-soon.png";
+    }
+    setIsSubmit(true);
+    setTimeout(() => {
+      setIsSubmit(false);
+    }, 2000);
     setMenu(newMenu);
   };
 
@@ -73,12 +80,7 @@ export default function AddPanel() {
             className="input"
           />
         </div>
-        <div className="button-text">
-          <Button label="Ajouter un nouveau produit au menu" />
-          <p>
-            <FiCheck /> Ajouté avec succès !
-          </p>
-        </div>
+        <ButtonText isSubmit={isSubmit} />
       </div>
     </AddPanelStyled>
   );
@@ -104,47 +106,6 @@ const AddPanelStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 8px;
-  }
-
-  .button-text {
-    display: flex;
-    align-items: center;
-    height: 35px;
-    gap: 5px;
-    margin-top: 8px;
-
-    p {
-      color: #60bd4f;
-      margin-left: 10px;
-      display: flex;
-      align-items: center;
-
-      svg {
-        border: 1px solid #60bd4f;
-        border-radius: 100%;
-        width: 18px;
-        height: 18px;
-        margin-right: 5px;
-      }
-    }
-
-    button {
-      width: 275px;
-      height: 35px;
-      background: #60bd4f;
-      border-color: #60bd4f;
-      font-size: 12px;
-      margin: 0px;
-
-      &:hover {
-        color: #60bd4f;
-        background-color: white;
-      }
-      &:active {
-        background-color: #60bd4f;
-        color: white;
-      }
-    }
   }
 
   .image-container {
