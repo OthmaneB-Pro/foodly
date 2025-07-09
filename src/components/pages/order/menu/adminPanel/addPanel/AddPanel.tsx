@@ -5,18 +5,11 @@ import type { MenuType } from "../../../../../../fakeData/MenuType";
 import ButtonText from "./ButtonText";
 import RightInput from "./RightInput";
 import ImagePreview from "./ImagePreview";
+import { EmptyMenu } from "../../../../../../fakeData/fakeMenu";
 
 export default function AddPanel() {
   const [isSubmit, setIsSubmit] = useState(false);
-  const [inputValues, setInputValues] = useState<MenuType>({
-    id: Date.now(),
-    title: "",
-    imageSource: "",
-    price: 0,
-    quantity: 1,
-    isAvailable: true,
-    isAdvertised: false,
-  });
+  const [inputValues, setInputValues] = useState<MenuType>(EmptyMenu);
   const { setMenu, menu } = useContext(MenuContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +27,7 @@ export default function AddPanel() {
       setIsSubmit(false);
     }, 2000);
     setMenu(newMenu);
+    setInputValues(EmptyMenu);
   };
 
   return (
