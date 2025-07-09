@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { MenuContext } from "../../../../../../context/MenuContext";
 import type { MenuType } from "../../../../../../fakeData/MenuType";
 import ButtonText from "./ButtonText";
+import RightInput from "./RightInput";
 
 export default function AddPanel() {
   const [isSubmit, setIsSubmit] = useState(false);
@@ -51,35 +52,7 @@ export default function AddPanel() {
       )}
 
       <div>
-        <div className="right-input">
-          <Input
-            placeholder="Nom du produit (ex: Super Burger)"
-            Icon={<FaHamburger />}
-            type="text"
-            value={inputValues.title}
-            name="title"
-            onChange={handleChange}
-            className="input"
-          />
-          <Input
-            placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-            Icon={<BsFillCameraFill />}
-            type="text"
-            value={inputValues.imageSource}
-            name="imageSource"
-            onChange={handleChange}
-            className="input"
-          />
-          <Input
-            placeholder="Prix"
-            Icon={<MdOutlineEuro />}
-            type="text"
-            value={inputValues.price}
-            name="price"
-            onChange={handleChange}
-            className="input"
-          />
-        </div>
+        <RightInput inputValues={inputValues} onChange={handleChange} />
         <ButtonText isSubmit={isSubmit} />
       </div>
     </AddPanelStyled>
@@ -91,22 +64,6 @@ const AddPanelStyled = styled.form`
   gap: 20px;
   position: absolute;
   left: 70px;
-
-  .input {
-    padding: 8px 16px;
-    width: 613px;
-    background: #f5f5f7;
-
-    input {
-      width: 570px;
-      background: #f5f5f7;
-    }
-  }
-  .right-input {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
 
   .image-container {
     border: 1px solid #e4e5e9;
