@@ -1,13 +1,10 @@
-import { FaHamburger } from "react-icons/fa";
-import Input from "../../../../../reusable-ui/Input";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { MenuContext } from "../../../../../../context/MenuContext";
 import type { MenuType } from "../../../../../../fakeData/MenuType";
 import ButtonText from "./ButtonText";
 import RightInput from "./RightInput";
+import ImagePreview from "./ImagePreview";
 
 export default function AddPanel() {
   const [isSubmit, setIsSubmit] = useState(false);
@@ -41,15 +38,7 @@ export default function AddPanel() {
 
   return (
     <AddPanelStyled onSubmit={handleSubmit}>
-      {inputValues.imageSource ? (
-        <div className="image-container2">
-          <img src={inputValues.imageSource} alt="Aucune Image" />
-        </div>
-      ) : (
-        <div className="image-container">
-          <p>Aucune Image</p>
-        </div>
-      )}
+      <ImagePreview imageSource={inputValues.imageSource} />
 
       <div>
         <RightInput inputValues={inputValues} onChange={handleChange} />
@@ -64,34 +53,4 @@ const AddPanelStyled = styled.form`
   gap: 20px;
   position: absolute;
   left: 70px;
-
-  .image-container {
-    border: 1px solid #e4e5e9;
-    border-radius: 5px;
-    width: 215px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 100px;
-    }
-    p {
-      color: #93a2b1;
-    }
-  }
-  .image-container2 {
-    border-radius: 5px;
-    width: 215px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 1px;
-
-    img {
-      width: 100px;
-    }
-  }
 `;
