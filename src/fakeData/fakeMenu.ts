@@ -1,3 +1,13 @@
+export const EmptyMenu = {
+  id: Date.now(),
+  title: "",
+  imageSource: "",
+  price: 0,
+  quantity: 1,
+  isAvailable: true,
+  isAdvertised: false,
+};
+
 export const fakeMenu1 = [
   {
     id: 1,

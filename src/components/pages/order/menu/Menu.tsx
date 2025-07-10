@@ -4,13 +4,21 @@ import CardContainer from "./CardContainer.js";
 import AdminPanel from "./adminPanel/AdminPanel.js";
 import { useContext } from "react";
 import { MenuContext } from "../../../../context/MenuContext.js";
+import EmptyAdmin from "./emptyMenu/EmptyAdmin.js";
+import EmptyCustomer from "./emptyMenu/EmptyCustomer.js";
 
 export default function Menu() {
-  const { isAdmin } = useContext(MenuContext);
+  const { isAdmin, menu } = useContext(MenuContext);
 
   return (
     <MenuStyled>
-      <CardContainer />
+      {menu.length > 0 ? (
+        <CardContainer />
+      ) : isAdmin ? (
+        <EmptyAdmin />
+      ) : (
+        <EmptyCustomer />
+      )}
       {isAdmin && <AdminPanel />}
     </MenuStyled>
   );

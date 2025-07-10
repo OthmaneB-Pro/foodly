@@ -4,11 +4,12 @@ import { theme } from "../../theme";
 type ButtonType = {
   label: string;
   Icon?: React.ReactElement;
+  onClick?: () => void;
 };
 
-export default function Button({ label, Icon }: ButtonType) {
+export default function Button({ label, Icon, onClick }: ButtonType) {
   return (
-    <ButtonStyled>
+    <ButtonStyled onClick={onClick}>
       {label} {Icon && Icon}
     </ButtonStyled>
   );
