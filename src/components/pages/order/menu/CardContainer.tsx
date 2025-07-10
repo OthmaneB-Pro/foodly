@@ -5,11 +5,8 @@ import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
 
 export default function CardContainer() {
-  const { menu, setMenu, isAdmin } = useContext(MenuContext);
+  const { menu, isAdmin, handleDelete } = useContext(MenuContext);
 
-  const handleDelete = (idProduct: number) => {
-    setMenu(menu.filter((product) => product.id !== idProduct));
-  };
   return (
     <CardContainerStyled>
       {menu.length > 0 &&

@@ -19,6 +19,10 @@ export default function OrderPage() {
     const newMenu = [inputValues, ...copyMenu];
     setMenu(newMenu);
   };
+  const handleDelete = (idProduct: number) => {
+    const menuCopy = [...menu];
+    setMenu(menuCopy.filter((product) => product.id !== idProduct));
+  };
 
   const MenuContextValue = {
     isAdmin,
@@ -28,6 +32,7 @@ export default function OrderPage() {
     menu,
     setMenu,
     handleAdd,
+    handleDelete,
   };
 
   return (

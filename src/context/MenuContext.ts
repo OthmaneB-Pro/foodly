@@ -6,9 +6,10 @@ type MenuContextType = {
   setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
   mode: "add" | "edit";
   setMode: React.Dispatch<React.SetStateAction<"add" | "edit">>;
-  menu : MenuType[];
-  setMenu : React.Dispatch<React.SetStateAction<MenuType[]>>;
+  menu: MenuType[];
+  setMenu: React.Dispatch<React.SetStateAction<MenuType[]>>;
   handleAdd: (inputValues: MenuType) => void;
+  handleDelete: (idProduct: number) => void;
 };
 
 export const MenuContext = createContext<MenuContextType>({
@@ -18,5 +19,6 @@ export const MenuContext = createContext<MenuContextType>({
   setMode: () => {},
   menu: [],
   setMenu: () => {},
-  handleAdd : () => {}
+  handleAdd: () => {},
+  handleDelete: () => {},
 });
