@@ -10,7 +10,7 @@ import { EmptyMenu } from "../../../../../../fakeData/fakeMenu";
 export default function AddPanel() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [inputValues, setInputValues] = useState<MenuType>(EmptyMenu);
-  const { setMenu, menu } = useContext(MenuContext);
+  const { handleAdd } = useContext(MenuContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
@@ -18,15 +18,16 @@ export default function AddPanel() {
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newMenu = [inputValues, ...menu];
-    if (inputValues.imageSource.length === 0) {
+
+    if (inputValues.imageSource === "") {
       inputValues.imageSource = "../img/coming-soon.png";
     }
     setIsSubmit(true);
     setTimeout(() => {
       setIsSubmit(false);
     }, 2000);
-    setMenu(newMenu);
+
+    handleAdd(inputValues);
     setInputValues(EmptyMenu);
   };
 

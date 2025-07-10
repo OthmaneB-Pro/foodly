@@ -6,12 +6,19 @@ import Menu from "./menu/Menu";
 import { useState } from "react";
 import { MenuContext } from "../../../context/MenuContext";
 import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import type { MenuType } from "../../../fakeData/MenuType";
 
 export default function OrderPage() {
   const { username } = useParams();
   const [isAdmin, setIsAdmin] = useState(false);
   const [mode, setMode] = useState<"add" | "edit">("add");
-  const [menu, setMenu] = useState(fakeMenu2)
+  const [menu, setMenu] = useState(fakeMenu2);
+
+  const handleAdd = (inputValues: MenuType) => {
+    const copyMenu = [...menu];
+    const newMenu = [inputValues, ...copyMenu];
+    setMenu(newMenu);
+  };
 
   const MenuContextValue = {
     isAdmin,
@@ -20,6 +27,7 @@ export default function OrderPage() {
     setMode,
     menu,
     setMenu,
+    handleAdd,
   };
 
   return (
