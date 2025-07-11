@@ -3,6 +3,7 @@ import ListPanel from "./ListPanel";
 import { useContext, useState } from "react";
 import { MenuContext } from "../../../../../context/MenuContext";
 import AddPanel from "./addPanel/AddPanel";
+import EditPanel from "./editPanel/EditPanel";
 
 export default function AdminPanel() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function AdminPanel() {
 
       {isPanelOpen && (
         <div className="bloc">
-          {mode === "add" ? <AddPanel /> : "Modifier un produit"}
+          {mode === "add" ? <AddPanel /> : <EditPanel />}
         </div>
       )}
     </AdminPanelStyled>
