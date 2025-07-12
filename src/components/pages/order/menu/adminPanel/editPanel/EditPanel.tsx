@@ -1,23 +1,14 @@
 import { useContext } from "react";
-import { HiCursorClick } from "react-icons/hi";
 import styled from "styled-components";
 import { MenuContext } from "../../../../../../context/MenuContext";
+import EmptyText from "./EmptyText";
+import SelectedCard from "./SelectedCard";
 
 export default function EditPanel() {
-  const { activeCardId, selectedProduct } = useContext(MenuContext);
+  const { activeCardId } = useContext(MenuContext);
   return (
     <EditPanelStyled>
-      {activeCardId ? (
-        <div>
-          <p>{selectedProduct?.title}</p>
-          <p>{selectedProduct?.imageSource}</p>
-          <p>{selectedProduct?.price}</p>
-        </div>
-      ) : (
-        <p>
-          Cliquer sur un produit pour le modifier <HiCursorClick />
-        </p>
-      )}
+      {activeCardId ? <SelectedCard /> : <EmptyText />}
     </EditPanelStyled>
   );
 }
@@ -28,12 +19,4 @@ const EditPanelStyled = styled.div`
   position: absolute;
   top: 110px;
   left: 70px;
-
-  p {
-    font-family: Amatic SC;
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 24px;
-    color: #747b91;
-  }
 `;
