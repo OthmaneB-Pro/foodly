@@ -4,11 +4,15 @@ import styled from "styled-components";
 import { MenuContext } from "../../../../../../context/MenuContext";
 
 export default function EditPanel() {
-  const { activeCardId } = useContext(MenuContext);
+  const { activeCardId, selectedProduct } = useContext(MenuContext);
   return (
     <EditPanelStyled>
       {activeCardId ? (
-        ""
+        <div>
+          <p>{selectedProduct?.title}</p>
+          <p>{selectedProduct?.imageSource}</p>
+          <p>{selectedProduct?.price}</p>
+        </div>
       ) : (
         <p>
           Cliquer sur un produit pour le modifier <HiCursorClick />

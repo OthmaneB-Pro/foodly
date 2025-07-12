@@ -3,6 +3,7 @@ import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths";
 import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
+import type { MenuType } from "../../../../fakeData/MenuType";
 
 export default function CardContainer() {
   const {
@@ -13,11 +14,13 @@ export default function CardContainer() {
     setIsPanelOpen,
     activeCardId,
     setActiveCardId,
+    setSelectedProduct,
   } = useContext(MenuContext);
 
-  const handleToggleActive = (id: number) => {
-    setActiveCardId((prev) => (prev === id ? null : id));
+  const handleToggleActive = (product: MenuType) => {
+    setActiveCardId((prev) => (prev === product.id ? null : product.id));
     setMode("edit");
+    setSelectedProduct(product);
     setIsPanelOpen(true);
   };
 
@@ -34,7 +37,7 @@ export default function CardContainer() {
             onDelete={() => handleDelete(product.id)}
             isAdmin={isAdmin}
             isActive={activeCardId === product.id}
-            onToggleActive={() => handleToggleActive(product.id)}
+            onToggleActive={() => handleToggleActive(product)}
           />
         ))}
     </CardContainerStyled>
