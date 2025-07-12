@@ -12,8 +12,7 @@ export default function EditPanel() {
 }
 
 const EditPanelStyled = styled.div`
-  display: flex;
-  align-items: center;
+  display: flex;  align-items: center;
   position: absolute;
   top: 110px;
   left: 70px;
@@ -22,7 +21,7 @@ const EditPanelStyled = styled.div`
     font-family: Amatic SC;
     font-weight: 400;
     font-style: Regular;
-    font-size: 24px;
+    font-size: 24px;           
     color: #747b91;
   }
 `;

@@ -5,12 +5,13 @@ import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
 
 export default function CardContainer() {
-  const { menu, isAdmin, handleDelete, setMode } = useContext(MenuContext);
+  const { menu, isAdmin, handleDelete, setMode, setIsPanelOpen } = useContext(MenuContext);
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
 
   const handleToggleActive = (id: number) => {
     setActiveCardId((prev) => (prev === id ? null : id));
-    setMode("edit")
+    setMode("edit");
+    setIsPanelOpen(true);
   };
 
   return (
