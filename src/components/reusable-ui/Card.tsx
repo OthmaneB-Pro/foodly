@@ -150,5 +150,11 @@ const CardStyled = styled.div`
       background: white;
       color: #ffa01b;
     }
+    svg:hover {
+      color: #e25549;
+      &:active {
+        color: white;
+      }
+    }
   }
 `;

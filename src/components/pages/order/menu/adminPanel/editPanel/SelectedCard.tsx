@@ -8,12 +8,14 @@ import TextEdit from "./TextEdit";
 
 export default function SelectedCard() {
   const { selectedProduct, setSelectedProduct } = useContext(MenuContext);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setSelectedProduct(
       (prevValues) => ({ ...prevValues, [name]: value } as MenuType)
     );
   };
+ 
   return (
     <SelectedCardStyled>
       <ImagePreview imageSource={selectedProduct?.imageSource as string} />
