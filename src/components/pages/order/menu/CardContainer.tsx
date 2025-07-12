@@ -15,6 +15,7 @@ export default function CardContainer() {
     activeCardId,
     setActiveCardId,
     setSelectedProduct,
+    selectedProduct,
   } = useContext(MenuContext);
 
   const handleToggleActive = (product: MenuType) => {
@@ -27,19 +28,25 @@ export default function CardContainer() {
   return (
     <CardContainerStyled>
       {menu.length > 0 &&
-        menu.map((product) => (
-          <Card
-            key={product.id}
-            src={product.imageSource}
-            alt={product.title}
-            title={product.title}
-            price={formatPrice(product.price)}
-            onDelete={() => handleDelete(product.id)}
-            isAdmin={isAdmin}
-            isActive={activeCardId === product.id}
-            onToggleActive={() => handleToggleActive(product)}
-          />
-        ))}
+        menu.map((product) => {
+          const isActive = activeCardId === product.id;
+          const cardData =
+            isActive && selectedProduct ? selectedProduct : product;
+
+          return (
+            <Card
+              key={product.id}
+              src={cardData.imageSource}
+              alt={cardData.title}
+              title={cardData.title}
+              price={formatPrice(cardData.price)}
+              onDelete={() => handleDelete(product.id)}
+              isAdmin={isAdmin}
+              isActive={isActive}
+              onToggleActive={() => handleToggleActive(product)}
+            />
+          );
+        })}
     </CardContainerStyled>
   );
 }
