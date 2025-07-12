@@ -1,12 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "../../../../utils/maths";
 import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
 
 export default function CardContainer() {
-  const { menu, isAdmin, handleDelete, setMode, setIsPanelOpen } = useContext(MenuContext);
-  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+  const {
+    menu,
+    isAdmin,
+    handleDelete,
+    setMode,
+    setIsPanelOpen,
+    activeCardId,
+    setActiveCardId,
+  } = useContext(MenuContext);
 
   const handleToggleActive = (id: number) => {
     setActiveCardId((prev) => (prev === id ? null : id));

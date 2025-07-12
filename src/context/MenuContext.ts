@@ -12,6 +12,8 @@ type MenuContextType = {
   handleDelete: (idProduct: number) => void;
   isPanelOpen: boolean;
   setIsPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  activeCardId: number | null;
+  setActiveCardId: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 export const MenuContext = createContext<MenuContextType>({
@@ -25,4 +27,6 @@ export const MenuContext = createContext<MenuContextType>({
   handleDelete: () => {},
   isPanelOpen: false,
   setIsPanelOpen: () => {},
+  activeCardId: null,
+  setActiveCardId: () => {},
 });

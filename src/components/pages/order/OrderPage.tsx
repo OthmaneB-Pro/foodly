@@ -14,6 +14,7 @@ export default function OrderPage() {
   const [mode, setMode] = useState<"add" | "edit">("add");
   const [menu, setMenu] = useState(fakeMenu2);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
 
   const handleAdd = (inputValues: MenuType) => {
     const copyMenu = [...menu];
@@ -36,6 +37,8 @@ export default function OrderPage() {
     handleDelete,
     isPanelOpen,
     setIsPanelOpen,
+    activeCardId,
+    setActiveCardId,
   };
 
   return (
