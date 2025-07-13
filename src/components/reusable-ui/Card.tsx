@@ -10,6 +10,8 @@ type CardType = {
   price: string;
   onDelete: () => void;
   isAdmin: boolean;
+  isActive?: boolean;
+  onToggleActive?: () => void;
 };
 
 export default function Card({
@@ -19,9 +21,14 @@ export default function Card({
   price,
   onDelete,
   isAdmin,
+  isActive = false,
+  onToggleActive,
 }: CardType) {
   return (
-    <CardStyled>
+    <CardStyled
+      className={`${isAdmin ? "admin" : ""} ${isActive ? "active" : ""}`}
+      onClick={isAdmin ? onToggleActive : undefined}
+    >
       {isAdmin && (
         <button onClick={onDelete} className="delete-button">
           <TiDelete />
@@ -123,5 +130,31 @@ const CardStyled = styled.div`
     object-fit: contain;
     position: relative;
     top: 10px;
+  }
+
+  &.admin:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 8px 0px #ff9a23;
+  }
+
+  &.admin.active {
+    background: #ffa01b;
+
+    svg,
+    p {
+      color: white;
+    }
+
+    .price-button button {
+      background: white;
+      color: #ffa01b;
+    }
+    svg:hover {
+      color: #e25549;
+      &:active {
+        color: white;
+      }
+    }
   }
 `;

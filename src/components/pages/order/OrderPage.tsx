@@ -13,6 +13,9 @@ export default function OrderPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [mode, setMode] = useState<"add" | "edit">("add");
   const [menu, setMenu] = useState(fakeMenu2);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<MenuType | null>(null);
 
   const handleAdd = (inputValues: MenuType) => {
     const copyMenu = [...menu];
@@ -33,6 +36,12 @@ export default function OrderPage() {
     setMenu,
     handleAdd,
     handleDelete,
+    isPanelOpen,
+    setIsPanelOpen,
+    activeCardId,
+    setActiveCardId,
+    selectedProduct,
+    setSelectedProduct,
   };
 
   return (

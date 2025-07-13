@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { MenuContext } from "../../../../../../context/MenuContext";
 import type { MenuType } from "../../../../../../fakeData/MenuType";
 import ButtonText from "./ButtonText";
-import RightInput from "./RightInput";
-import ImagePreview from "./ImagePreview";
+import RightInput from "../panel/RightInput";
+import ImagePreview from "../panel/ImagePreview";
 import { EmptyMenu } from "../../../../../../fakeData/fakeMenu";
 
 export default function AddPanel() {

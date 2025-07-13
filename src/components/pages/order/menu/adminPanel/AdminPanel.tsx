@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import ListPanel from "./ListPanel";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { MenuContext } from "../../../../../context/MenuContext";
 import AddPanel from "./addPanel/AddPanel";
+import EditPanel from "./editPanel/EditPanel";
 
 export default function AdminPanel() {
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const { mode } = useContext(MenuContext);
+  const { mode, isPanelOpen, setIsPanelOpen } = useContext(MenuContext);
 
   return (
     <AdminPanelStyled>
@@ -14,7 +14,7 @@ export default function AdminPanel() {
 
       {isPanelOpen && (
         <div className="bloc">
-          {mode === "add" ? <AddPanel /> : "Modifier un produit"}
+          {mode === "add" ? <AddPanel /> : <EditPanel />}
         </div>
       )}
     </AdminPanelStyled>

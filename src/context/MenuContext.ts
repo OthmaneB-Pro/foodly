@@ -10,6 +10,12 @@ type MenuContextType = {
   setMenu: React.Dispatch<React.SetStateAction<MenuType[]>>;
   handleAdd: (inputValues: MenuType) => void;
   handleDelete: (idProduct: number) => void;
+  isPanelOpen: boolean;
+  setIsPanelOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  activeCardId: number | null;
+  setActiveCardId: React.Dispatch<React.SetStateAction<number | null>>;
+  selectedProduct: MenuType | null;
+  setSelectedProduct: React.Dispatch<React.SetStateAction<MenuType | null>>;
 };
 
 export const MenuContext = createContext<MenuContextType>({
@@ -21,4 +27,10 @@ export const MenuContext = createContext<MenuContextType>({
   setMenu: () => {},
   handleAdd: () => {},
   handleDelete: () => {},
+  isPanelOpen: false,
+  setIsPanelOpen: () => {},
+  activeCardId: null,
+  setActiveCardId: () => {},
+  selectedProduct: null,
+  setSelectedProduct: () => {},
 });
