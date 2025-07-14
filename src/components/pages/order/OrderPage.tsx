@@ -5,27 +5,17 @@ import Navbar from "./navbar/Navbar";
 import Menu from "./menu/Menu";
 import { useState } from "react";
 import { MenuContext } from "../../../context/MenuContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
 import type { MenuType } from "../../../fakeData/MenuType";
+import { useMenuProduct } from "../../../hooks/useMenuProduct";
 
 export default function OrderPage() {
   const { username } = useParams();
   const [isAdmin, setIsAdmin] = useState(false);
   const [mode, setMode] = useState<"add" | "edit">("add");
-  const [menu, setMenu] = useState(fakeMenu2);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<MenuType | null>(null);
-
-  const handleAdd = (inputValues: MenuType) => {
-    const copyMenu = [...menu];
-    const newMenu = [inputValues, ...copyMenu];
-    setMenu(newMenu);
-  };
-  const handleDelete = (idProduct: number) => {
-    const menuCopy = [...menu];
-    setMenu(menuCopy.filter((product) => product.id !== idProduct));
-  };
+  const { menu, setMenu, handleAdd, handleDelete } = useMenuProduct();
 
   const MenuContextValue = {
     isAdmin,
