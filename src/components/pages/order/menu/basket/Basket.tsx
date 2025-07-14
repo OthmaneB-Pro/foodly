@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import TotalPrice from "./TotalPrice";
-import HeaderBasket from "./HeaderBasket";
+import FooterBasket from "./FooterBasket";
 import BasketMain from "./BasketMain";
 
 export default function Basket() {
@@ -8,7 +8,7 @@ export default function Basket() {
     <BasketStyled>
       <TotalPrice />
       <BasketMain />
-      <HeaderBasket />
+      <FooterBasket />
     </BasketStyled>
   );
 }

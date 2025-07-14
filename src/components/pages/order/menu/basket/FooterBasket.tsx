@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export default function HeaderBasket() {
-  return <HeaderBasketStyled />;
+export default function FooterBasket() {
+  return <FooterBasketStyled />;
 }
 
-const HeaderBasketStyled = styled.div`
+const FooterBasketStyled = styled.div`
   background: black;
   color: #ffa01b;
   height: 70px;
