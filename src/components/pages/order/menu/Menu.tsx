@@ -4,6 +4,7 @@ import AdminPanel from "./adminPanel/AdminPanel.js";
 import { useContext } from "react";
 import { MenuContext } from "../../../../context/MenuContext.js";
 import ListCard from "./ListCard.js";
+import BasketMain from "./basket/BasketMain.js";
 
 export default function Menu() {
   const { isAdmin } = useContext(MenuContext);
@@ -11,7 +12,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       <div className="affichage">
-        <div className="panier" />
+        <BasketMain />
         <ListCard />
       </div>
       {isAdmin && <AdminPanel />}
@@ -35,15 +36,5 @@ const MenuStyled = styled.div`
   }
   .affichage {
     display: flex;
-  }
-  .panier {
-    background-color: black;
-    width: 350px;
-    height: 80vh;
-    border-bottom-left-radius: 15px;
-    opacity: 1;
-    position: fixed;
-
-    z-index: 1000;
   }
 `;
