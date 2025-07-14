@@ -52,10 +52,11 @@ export default function CardContainer() {
 }
 
 const CardContainerStyled = styled.div`
-  padding: 50px 92.5px;
+  padding: 50px 88px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 85px;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 76px;
   row-gap: 60px;
   min-height: 85vh;
+  margin-left: 350px;
 `;
