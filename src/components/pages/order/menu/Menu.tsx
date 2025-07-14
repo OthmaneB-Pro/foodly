@@ -4,7 +4,7 @@ import AdminPanel from "./adminPanel/AdminPanel.js";
 import { useContext } from "react";
 import { MenuContext } from "../../../../context/MenuContext.js";
 import ListCard from "./ListCard.js";
-import BasketMain from "./basket/BasketMain.js";
+import Basket from "./basket/Basket.js";
 
 export default function Menu() {
   const { isAdmin } = useContext(MenuContext);
@@ -12,7 +12,7 @@ export default function Menu() {
   return (
     <MenuStyled>
       <div className="main-container">
-        <BasketMain />
+        <Basket />
         <ListCard />
       </div>
       {isAdmin && <AdminPanel />}
