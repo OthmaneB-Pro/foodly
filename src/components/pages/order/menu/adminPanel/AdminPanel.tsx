@@ -24,6 +24,7 @@ export default function AdminPanel() {
 const AdminPanelStyled = styled.div`
   position: sticky;
   bottom: 0;
+  margin-left: 350px;
 
   .bloc {
     height: 210px;

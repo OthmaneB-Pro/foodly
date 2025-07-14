@@ -4,6 +4,7 @@ import { formatPrice } from "../../../../utils/maths";
 import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
 import type { MenuType } from "../../../../fakeData/MenuType";
+import { theme } from "../../../../theme";
 
 export default function CardContainer() {
   const {
@@ -52,10 +53,12 @@ export default function CardContainer() {
 }
 
 const CardContainerStyled = styled.div`
-  padding: 50px 92.5px;
+  padding: 50px 89px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 85px;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 76px;
   row-gap: 60px;
   min-height: 85vh;
+  margin-left: 350px;
+  box-shadow: ${theme.shadows.strong};
 `;
