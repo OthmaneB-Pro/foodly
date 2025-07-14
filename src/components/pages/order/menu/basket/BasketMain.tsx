@@ -3,9 +3,14 @@ import styled from "styled-components";
 export default function BasketMain() {
   return (
     <BasketMainStyled>
-      <div className="bloc"></div>
-      <div className="main"></div>
-      <div className="bloc"></div>
+      <div className="bloc">
+        <p>Total</p>
+        <p>0,00 €</p>
+      </div>
+      <div className="main">
+        <p>Votre commande est vide</p>
+      </div>
+      <div className="bloc" />
     </BasketMainStyled>
   );
 }
@@ -27,11 +32,11 @@ const BasketMainStyled = styled.div`
     height: 70px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0px 16px;
 
     p {
       font-family: "Amatic SC";
-      font-weight: 700;
       font-style: normal;
       font-size: 36px;
       letter-spacing: 2px;
@@ -41,5 +46,15 @@ const BasketMainStyled = styled.div`
   .main {
     flex: 1;
     overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      font-family: Amatic SC;
+      font-size: 36px;
+      line-height: 72px;
+      color: #747b91;
+    }
   }
 `;
