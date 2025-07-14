@@ -10,7 +10,7 @@ export default function BasketMain() {
       <div className="main">
         <p>Votre commande est vide</p>
       </div>
-      <div className="bloc" />
+      <div className="bloc2" />
     </BasketMainStyled>
   );
 }
@@ -25,6 +25,8 @@ const BasketMainStyled = styled.div`
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 20px 0px #00000033 inset;
+
 
   .bloc {
     background: black;
@@ -43,6 +45,16 @@ const BasketMainStyled = styled.div`
     }
   }
 
+  .bloc2 {
+    background: black;
+    color: #ffa01b;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 16px;
+    border-bottom-left-radius: 15px;
+  }
   .main {
     flex: 1;
     overflow-y: auto;

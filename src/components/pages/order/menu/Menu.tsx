@@ -11,7 +11,7 @@ export default function Menu() {
 
   return (
     <MenuStyled>
-      <div className="affichage">
+      <div className="main-container">
         <BasketMain />
         <ListCard />
       </div>
@@ -26,7 +26,6 @@ const MenuStyled = styled.div`
   min-height: 80vh;
   max-height: 80vh;
   border-radius: 0px 0px 15px 15px;
-  box-shadow: ${theme.shadows.strong};
   overflow-y: auto;
   scrollbar-width: none;
   position: relative;
@@ -34,7 +33,7 @@ const MenuStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  .affichage {
+  .main-container {
     display: flex;
   }
 `;
