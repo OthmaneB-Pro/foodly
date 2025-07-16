@@ -13,6 +13,7 @@ const EmptyBasketStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   p {
     font-family: Amatic SC;
     font-size: 36px;

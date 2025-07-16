@@ -17,6 +17,8 @@ export default function CardContainer() {
     setActiveCardId,
     setSelectedProduct,
     selectedProduct,
+    basket,
+    setBasket,
   } = useContext(MenuContext);
 
   const handleToggleActive = (product: MenuType) => {
@@ -24,6 +26,12 @@ export default function CardContainer() {
     setMode("edit");
     setSelectedProduct(product);
     setIsPanelOpen(true);
+  };
+
+  const handleAddBasket = (product : MenuType) => {
+    const basketCopy = [...basket];
+    const newBasket = [product, ...basketCopy];
+    setBasket(newBasket);
   };
 
   return (
@@ -45,6 +53,7 @@ export default function CardContainer() {
               isAdmin={isAdmin}
               isActive={isActive}
               onToggleActive={() => handleToggleActive(product)}
+              onAddBasket={() => handleAddBasket(product)}
             />
           );
         })}
