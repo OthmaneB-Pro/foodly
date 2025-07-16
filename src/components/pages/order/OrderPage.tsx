@@ -16,6 +16,7 @@ export default function OrderPage() {
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<MenuType | null>(null);
   const { menu, setMenu, handleAdd, handleDelete } = useMenuProduct();
+  const [basket, setBasket] = useState<MenuType[]>([]);
 
   const MenuContextValue = {
     isAdmin,
@@ -32,6 +33,8 @@ export default function OrderPage() {
     setActiveCardId,
     selectedProduct,
     setSelectedProduct,
+    basket,
+    setBasket,
   };
 
   return (

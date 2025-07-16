@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import EmptyBasket from "./basketMenu/EmptyBasket";
+import { useContext } from "react";
+import { MenuContext } from "../../../../../context/MenuContext";
+import BasketCardContainer from "./basketMenu/BasketCardContainer";
 
 export default function BasketMain() {
+  const { basket } = useContext(MenuContext);
   return (
     <BasketMainStyled>
-      <EmptyBasket />
+      {basket.length !== 0 ? <BasketCardContainer /> : <EmptyBasket />}
     </BasketMainStyled>
   );
 }
