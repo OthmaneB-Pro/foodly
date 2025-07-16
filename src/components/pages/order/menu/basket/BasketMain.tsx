@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import BasketCard from "../../../../reusable-ui/BasketCard";
 
 export default function BasketMain() {
   return (
     <BasketMainStyled>
-      <p>Votre commande est vide</p>
+      <BasketCard/>
+      
     </BasketMainStyled>
   );
 }
