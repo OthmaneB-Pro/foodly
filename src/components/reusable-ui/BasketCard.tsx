@@ -1,16 +1,30 @@
 import styled from "styled-components";
 
-export default function BasketCard() {
+type BasketCardType = {
+  title: string;
+  price: string;
+  quantity: number;
+  img: string;
+  alt: string;
+};
+
+export default function BasketCard({
+  title,
+  price,
+  quantity,
+  img,
+  alt,
+}: BasketCardType) {
   return (
     <BasketCardStyled>
-      <img src="../img/fries3.png" />
+      <img src={img} alt={alt} />
       <div className="info">
         <div className="left-info">
-          <h3>New York Fries</h3>
-          <span>3,17€</span>
+          <h3>{title}</h3>
+          <span>{price}</span>
         </div>
         <div className="right-info">
-          <span>x 13</span>
+          <span>x {quantity}</span>
         </div>
       </div>
     </BasketCardStyled>
@@ -28,7 +42,9 @@ const BasketCardStyled = styled.div`
 
   img {
     width: 85px;
-    padding: 8px 16px;
+  height: 70px;
+  object-fit: contain;
+  padding: 8px 16px;
   }
   .info {
     display: flex;
@@ -44,6 +60,10 @@ const BasketCardStyled = styled.div`
       font-weight: 700;
       font-size: 24px;
       margin: 0;
+      width: 110px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     span {
       color: #ffa01b;

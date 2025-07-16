@@ -1,10 +1,23 @@
 import styled from "styled-components";
 import BasketCard from "../../../../../reusable-ui/BasketCard";
+import { useContext } from "react";
+import { MenuContext } from "../../../../../../context/MenuContext";
+import { formatPrice } from "../../../../../../utils/maths";
 
 export default function BasketCardContainer() {
+  const { basket } = useContext(MenuContext);
   return (
     <BasketCardContainerStyled>
-      <BasketCard />
+      {basket.map((basketProduct) => (
+        <BasketCard
+          key={basketProduct.id}
+          title={basketProduct.title}
+          price={formatPrice(basketProduct.price)}
+          quantity={basketProduct.quantity}
+          alt={basketProduct.title}
+          img={basketProduct.imageSource}
+        />
+      ))}
     </BasketCardContainerStyled>
   );
 }
