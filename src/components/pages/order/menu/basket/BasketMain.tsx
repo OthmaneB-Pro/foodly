@@ -17,4 +17,7 @@ const BasketMainStyled = styled.div`
   flex: 1;
   overflow-y: auto;
   display: flex;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 `;
