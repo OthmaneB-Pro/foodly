@@ -22,6 +22,19 @@ export const useMenuProduct = () => {
     setBasket(newBasket);
   };
 
+  const handleAddBasket = (product: MenuType) => {
+    const existingProduct = basket.find((item) => item.id === product.id);
+    if (existingProduct) {
+      const updatedBasket = basket.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      setBasket(updatedBasket);
+      return;
+    }
+    const basketCopy = [...basket];
+    const newBasket = [product, ...basketCopy];
+    setBasket(newBasket);
+  };
 
   const handleDeleteBasket = (idProduct: number) => {
     const basketCopy = [...basket];
@@ -31,5 +44,14 @@ export const useMenuProduct = () => {
     setBasket(deleteProductBasket);
   };
 
-  return { menu, setMenu, basket, setBasket, handleAdd, handleDelete, handleDeleteBasket };
+  return {
+    menu,
+    setMenu,
+    basket,
+    setBasket,
+    handleAdd,
+    handleDelete,
+    handleAddBasket,
+    handleDeleteBasket,
+  };
 };
