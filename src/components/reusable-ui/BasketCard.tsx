@@ -1,3 +1,4 @@
+import { MdDeleteForever } from "react-icons/md";
 import styled from "styled-components";
 
 type BasketCardType = {
@@ -6,6 +7,7 @@ type BasketCardType = {
   quantity: number;
   img: string;
   alt: string;
+  onDeleteBasket: () => void;
 };
 
 export default function BasketCard({
@@ -14,6 +16,7 @@ export default function BasketCard({
   quantity,
   img,
   alt,
+  onDeleteBasket,
 }: BasketCardType) {
   return (
     <BasketCardStyled>
@@ -27,6 +30,9 @@ export default function BasketCard({
           <span>x {quantity}</span>
         </div>
       </div>
+      <button onClick={onDeleteBasket}>
+        <MdDeleteForever />
+      </button>
     </BasketCardStyled>
   );
 }
@@ -42,9 +48,9 @@ const BasketCardStyled = styled.div`
 
   img {
     width: 85px;
-  height: 70px;
-  object-fit: contain;
-  padding: 8px 16px;
+    height: 70px;
+    object-fit: contain;
+    padding: 8px 16px;
   }
   .info {
     display: flex;
@@ -76,6 +82,39 @@ const BasketCardStyled = styled.div`
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+  }
+  button {
+    position: absolute;
+    opacity: 0;
+    left: 258px;
+    width: 76px;
+    height: 86px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background: #e25549;
+    &:hover {
+      svg {
+        color: black;
+      }
+    }
+    &:active {
+      svg {
+        color: white;
+      }
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
     }
   }
 `;
