@@ -5,15 +5,7 @@ import { MenuContext } from "../../../../../../context/MenuContext";
 import { formatPrice } from "../../../../../../utils/maths";
 
 export default function BasketCardContainer() {
-  const { basket, setBasket } = useContext(MenuContext);
-
-  const handleDeleteBasket = (idProduct: number) => {
-    const basketCopy = [...basket];
-    const deleteProductBasket = basketCopy.filter(
-      (product) => product.id !== idProduct
-    );
-    setBasket(deleteProductBasket);
-  };
+  const { basket, handleDeleteBasket } = useContext(MenuContext);
 
   return (
     <BasketCardContainerStyled>
