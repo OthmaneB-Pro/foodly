@@ -16,6 +16,10 @@ type MenuContextType = {
   setActiveCardId: React.Dispatch<React.SetStateAction<number | null>>;
   selectedProduct: MenuType | null;
   setSelectedProduct: React.Dispatch<React.SetStateAction<MenuType | null>>;
+  basket: MenuType[];
+  setBasket: React.Dispatch<React.SetStateAction<MenuType[]>>;
+  handleDeleteBasket: (idProduct: number) => void;
+  handleAddBasket: (product: MenuType) => void;
 };
 
 export const MenuContext = createContext<MenuContextType>({
@@ -33,4 +37,8 @@ export const MenuContext = createContext<MenuContextType>({
   setActiveCardId: () => {},
   selectedProduct: null,
   setSelectedProduct: () => {},
+  basket: [],
+  setBasket: () => {},
+  handleAddBasket: () => {},
+  handleDeleteBasket: () => {},
 });

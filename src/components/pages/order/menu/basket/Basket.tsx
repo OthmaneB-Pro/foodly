@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import TotalPrice from "./TotalPrice";
-import FooterBasket from "./FooterBasket";
+import TotalPrice from "./header/TotalPrice";
+import FooterBasket from "./footer/FooterBasket";
 import BasketMain from "./BasketMain";
 
 export default function Basket() {

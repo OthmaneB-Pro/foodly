@@ -12,6 +12,7 @@ type CardType = {
   isAdmin: boolean;
   isActive?: boolean;
   onToggleActive?: () => void;
+  onAddBasket: () => void;
 };
 
 export default function Card({
@@ -23,6 +24,7 @@ export default function Card({
   isAdmin,
   isActive = false,
   onToggleActive,
+  onAddBasket,
 }: CardType) {
   return (
     <CardStyled
@@ -39,7 +41,7 @@ export default function Card({
         <h2>{title}</h2>
         <div className="price-button">
           <p>{price}</p>
-          <Button label="Ajouter" />
+          <Button onClick={onAddBasket} label="Ajouter" />
         </div>
       </div>
     </CardStyled>

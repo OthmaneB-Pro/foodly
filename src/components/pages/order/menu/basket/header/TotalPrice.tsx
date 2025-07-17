@@ -1,10 +1,20 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { MenuContext } from "../../../../../../context/MenuContext";
+import { formatPrice } from "../../../../../../utils/maths";
 
 export default function TotalPrice() {
+  const { basket } = useContext(MenuContext);
+
+  const totalBasket = basket.reduce(
+    (acc, item) => acc + item.quantity * item.price,
+    0
+  );
+
   return (
     <TotalPriceStyled>
       <p>Total</p>
-      <p>0,00 €</p>
+      <p>{formatPrice(totalBasket)}</p>
     </TotalPriceStyled>
   );
 }

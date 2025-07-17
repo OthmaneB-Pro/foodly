@@ -17,6 +17,7 @@ export default function CardContainer() {
     setActiveCardId,
     setSelectedProduct,
     selectedProduct,
+    handleAddBasket,
   } = useContext(MenuContext);
 
   const handleToggleActive = (product: MenuType) => {
@@ -45,6 +46,7 @@ export default function CardContainer() {
               isAdmin={isAdmin}
               isActive={isActive}
               onToggleActive={() => handleToggleActive(product)}
+              onAddBasket={() => handleAddBasket(product)}
             />
           );
         })}
