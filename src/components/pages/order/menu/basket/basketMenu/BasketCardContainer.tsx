@@ -5,7 +5,7 @@ import { MenuContext } from "../../../../../../context/MenuContext";
 import { formatPrice } from "../../../../../../utils/maths";
 
 export default function BasketCardContainer() {
-  const { basket, handleDeleteBasket } = useContext(MenuContext);
+  const { basket, handleDeleteBasket, isAdmin } = useContext(MenuContext);
 
   return (
     <BasketCardContainerStyled>
@@ -18,6 +18,7 @@ export default function BasketCardContainer() {
           alt={basketProduct.title}
           img={basketProduct.imageSource}
           onDeleteBasket={() => handleDeleteBasket(basketProduct.id)}
+          isAdmin={isAdmin}
         />
       ))}
     </BasketCardContainerStyled>

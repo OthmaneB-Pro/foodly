@@ -8,6 +8,7 @@ type BasketCardType = {
   img: string;
   alt: string;
   onDeleteBasket: () => void;
+  isAdmin: boolean;
 };
 
 export default function BasketCard({
@@ -17,9 +18,10 @@ export default function BasketCard({
   img,
   alt,
   onDeleteBasket,
+  isAdmin,
 }: BasketCardType) {
   return (
-    <BasketCardStyled>
+    <BasketCardStyled className={`${isAdmin ? "click" : ""}`}>
       <img src={img} alt={alt} />
       <div className="info">
         <div className="left-info">
@@ -45,6 +47,16 @@ const BasketCardStyled = styled.div`
   background-color: white;
   box-shadow: -4px 4px 15px 0px #00000033;
   border-radius: 5px;
+
+  &.click {
+    cursor: pointer;
+  }
+  &.click:active {
+    background: #ffa01b;
+    span{
+      color: white;
+    }
+  }
 
   img {
     width: 85px;
