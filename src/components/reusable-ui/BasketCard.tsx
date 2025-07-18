@@ -10,7 +10,7 @@ type BasketCardType = {
   onDeleteBasket: () => void;
   isAdmin: boolean;
   onEditBasket: () => void;
-  isActive?: boolean; 
+  isActive?: boolean;
 };
 
 export default function BasketCard({
@@ -25,7 +25,10 @@ export default function BasketCard({
   isActive,
 }: BasketCardType) {
   return (
-    <BasketCardStyled onClick={onEditBasket} className={`${isAdmin ? "click" : ""} ${isActive ? "active" : ""}`}>
+    <BasketCardStyled
+      onClick={onEditBasket}
+      className={`${isAdmin ? "click" : ""} ${isActive ? "active" : ""}`}
+    >
       <img src={img} alt={alt} />
       <div className="info">
         <div className="left-info">
@@ -57,7 +60,7 @@ const BasketCardStyled = styled.div`
   }
   &.click.active {
     background: #ffa01b;
-    span{
+    span {
       color: white;
     }
   }
