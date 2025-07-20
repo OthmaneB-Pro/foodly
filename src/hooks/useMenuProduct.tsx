@@ -14,10 +14,6 @@ export const useMenuProduct = () => {
   const handleDelete = (idProduct: number) => {
     const newMenu = menu.filter((product) => product.id !== idProduct);
     const newBasket = basket.filter((product) => product.id !== idProduct);
-
-    console.log("Basket before:", basket);
-    console.log("Basket after:", newBasket);
-
     setMenu(newMenu);
     setBasket(newBasket);
   };
