@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
@@ -47,6 +47,18 @@ export default function Card({
     </CardStyled>
   );
 }
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+`;
 
 const CardStyled = styled.div`
   width: 240px;
@@ -159,16 +171,11 @@ const CardStyled = styled.div`
       }
     }
   }
-
-  @keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 300%;
+   &.active {
+    animation: ${slideIn} 0.5s ease forwards;
   }
 
-  to {
-    margin-left: 0%;
-    width: 100%;
-  }
-}
 `;
+
+
+
