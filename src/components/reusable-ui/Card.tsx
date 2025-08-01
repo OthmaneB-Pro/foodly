@@ -160,3 +160,6 @@ const CardStyled = styled.div`
     }
   }
 `;
+
+
+
