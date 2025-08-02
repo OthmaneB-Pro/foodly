@@ -14,6 +14,7 @@ type CardType = {
   isActive?: boolean;
   onToggleActive?: () => void;
   onAddBasket: () => void;
+  isAvailable : boolean;
   isAdvertised: boolean;
 };
 
@@ -27,6 +28,7 @@ export default function Card({
   isActive = false,
   onToggleActive,
   onAddBasket,
+  isAvailable,
   isAdvertised,
 }: CardType) {
   return (
@@ -34,6 +36,7 @@ export default function Card({
       className={`${isAdmin ? "admin" : ""} ${isActive ? "active" : ""}`}
       onClick={isAdmin ? onToggleActive : undefined}
     >
+      <div className="available">{isAvailable && <img src="/img/stock-epuise.png" />}</div>
       {isAdvertised && <Ribbon label="Nouveau" />}
       {isAdmin && (
         <button onClick={onDelete} className="delete-button">
@@ -59,12 +62,24 @@ const CardStyled = styled.div`
   background-color: ${theme.colors.white};
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  .available{
+    position: absolute;
+    z-index: 1;
+    box-shadow: -8px 8px 20px 0px #00000033 transparent;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 240px;
+    height: 330px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
   .delete-button {
     width: 30px;
     height: 30px;
