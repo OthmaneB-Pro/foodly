@@ -34,11 +34,22 @@ const RightInputStyled = styled.div`
 
   .input {
     padding: 8px 16px;
-    width: 613px;
+    width: 448px;
     background: #f5f5f7;
 
     input {
-      width: 570px;
+      width: 412px;
+      background: #f5f5f7;
+    }
+  }
+  .input_price {
+    padding: 8px 16px;
+    width: 122px;
+    background: #f5f5f7;
+   
+
+    input {
+      width: 83px;
       background: #f5f5f7;
     }
   }
