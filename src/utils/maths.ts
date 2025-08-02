@@ -16,3 +16,8 @@ export function replaceFrenchCommaWithDot(price: string | number): number {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."));
   return price;
 }
+
+export function convertStringToBoolean(input : string) {
+  if (typeof input === "boolean") return input
+  return input === "true"
+}
