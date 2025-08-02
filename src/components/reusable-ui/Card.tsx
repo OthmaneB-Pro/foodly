@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
+import Ribbon from "./Ribbon";
 
 type CardType = {
   src: string;
@@ -13,6 +14,7 @@ type CardType = {
   isActive?: boolean;
   onToggleActive?: () => void;
   onAddBasket: () => void;
+  isAdvertised: boolean;
 };
 
 export default function Card({
@@ -25,12 +27,14 @@ export default function Card({
   isActive = false,
   onToggleActive,
   onAddBasket,
+  isAdvertised,
 }: CardType) {
   return (
     <CardStyled
       className={`${isAdmin ? "admin" : ""} ${isActive ? "active" : ""}`}
       onClick={isAdmin ? onToggleActive : undefined}
     >
+      {isAdvertised ? <Ribbon label="Nouveau" /> : ""}
       {isAdmin && (
         <button onClick={onDelete} className="delete-button">
           <TiDelete />
@@ -160,6 +164,3 @@ const CardStyled = styled.div`
     }
   }
 `;
-
-
-

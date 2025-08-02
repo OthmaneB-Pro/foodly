@@ -1,13 +1,17 @@
-import React from "react"
 import styled from "styled-components"
 import { theme } from "../../theme"
 
-export default function Sticker({ label = "new", className }) {
+type StickerType = {
+  label : string;
+  className : string;
+}
+
+export default function Sticker({ label = "new", className } : StickerType) {
   return <StickerStyled className={className}>{label}</StickerStyled>
 }
 
 const StickerStyled = styled.span`
-  font-size: ${theme.fonts.size.XXXS};
+  font-size: 8px;
   padding: 1em;
   width: 15px;
   height: 15px;

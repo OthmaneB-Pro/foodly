@@ -47,6 +47,7 @@ export default function CardContainer() {
               isActive={isActive}
               onToggleActive={() => handleToggleActive(product)}
               onAddBasket={() => handleAddBasket(product)}
+              isAdvertised={cardData.isAdvertised}
             />
           );
         })}
