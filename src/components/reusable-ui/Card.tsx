@@ -34,7 +34,7 @@ export default function Card({
       className={`${isAdmin ? "admin" : ""} ${isActive ? "active" : ""}`}
       onClick={isAdmin ? onToggleActive : undefined}
     >
-      {isAdvertised ? <Ribbon label="Nouveau" /> : ""}
+      {isAdvertised && <Ribbon label="Nouveau" />}
       {isAdmin && (
         <button onClick={onDelete} className="delete-button">
           <TiDelete />
