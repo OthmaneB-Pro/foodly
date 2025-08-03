@@ -28,17 +28,25 @@ export const getInputs = [
     className: "input_small",
   },
   {
-    placeholder: "En stock",
+    placeholder: "",
     Icon: <FiPackage />,
-    type: "text",
+    type: "select",
     name: "isAvailable",
     className: "input_small",
+    options: [
+      { label: "En stock", value: "true" },
+      { label: "En rupture", value: "false" },
+    ],
   },
   {
-    placeholder: "Sans pub",
+    placeholder: "",
     Icon: <GoMegaphone />,
-    type: "text",
+    type: "select",
     name: "isAdvertised",
     className: "input_small",
+    options: [
+      { label: "Sans pub", value: "false" },
+      { label: "Avec pub", value: "true" },
+    ],
   },
 ];

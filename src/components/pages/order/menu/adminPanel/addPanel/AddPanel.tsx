@@ -6,16 +6,28 @@ import ButtonText from "./ButtonText";
 import RightInput from "../panel/RightInput";
 import ImagePreview from "../panel/ImagePreview";
 import { EmptyMenu } from "../../../../../../fakeData/fakeMenu";
+import { convertStringToBoolean } from "../../../../../../utils/maths";
 
 export default function AddPanel() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [inputValues, setInputValues] = useState<MenuType>(EmptyMenu);
   const { handleAdd } = useContext(MenuContext);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { value, name } = event.target;
-    setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
+    const newValue =
+      name === "isAvailable" || name === "isAdvertised"
+        ? convertStringToBoolean(value)
+        : value;
+
+    setInputValues((prev) => ({
+      ...prev,
+      [name]: newValue,
+    }));
   };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 

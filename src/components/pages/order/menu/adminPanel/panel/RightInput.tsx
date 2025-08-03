@@ -5,7 +5,9 @@ import { getInputs } from "./getInputs";
 
 type InputValues = {
   inputValues: MenuType;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
 };
 
 export default function RightInput({ inputValues, onChange }: InputValues) {
@@ -25,9 +27,7 @@ export default function RightInput({ inputValues, onChange }: InputValues) {
           <Input
             key={value.name}
             {...value}
-            value={
-              inputValues[value.name as keyof MenuType] as string | number
-            }
+            value={inputValues[value.name as keyof MenuType] as string | number}
             onChange={onChange}
           />
         ))}
