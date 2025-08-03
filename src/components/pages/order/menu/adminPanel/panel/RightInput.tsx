@@ -67,4 +67,10 @@ const RightInputStyled = styled.div`
     display: flex;
     gap: 8px;
   }
+  select {
+    background: #f5f5f7;
+    border: none;
+    appearance: none;
+    width: 90px;
+  }
 `;
