@@ -37,7 +37,7 @@ export const fakeMenu2 = [
     price: 5.598,
     quantity: 1,
     isAvailable: true,
-    isAdvertised: false,
+    isAdvertised: true,
   },
   {
     id: 2,

@@ -25,6 +25,7 @@ const AdminPanelStyled = styled.div`
   position: sticky;
   bottom: 0;
   margin-left: 350px;
+  z-index: 100;
 
   .bloc {
     height: 210px;

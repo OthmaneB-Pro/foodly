@@ -5,24 +5,33 @@ import { getInputs } from "./getInputs";
 
 type InputValues = {
   inputValues: MenuType;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
 };
 
 export default function RightInput({ inputValues, onChange }: InputValues) {
   return (
     <RightInputStyled>
-      {getInputs.map((value) => (
+      {getInputs.slice(0, -3).map((value) => (
         <Input
           key={value.name}
-          placeholder={value.placeholder}
-          Icon={value.Icon}
-          type={value.type}
+          {...value}
           value={inputValues[value.name as keyof MenuType] as string | number}
-          name={value.name}
           onChange={onChange}
-          className={value.className}
         />
       ))}
+
+      <div className="small-inputs-wrapper">
+        {getInputs.slice(-3).map((value) => (
+          <Input
+            key={value.name}
+            {...value}
+            value={inputValues[value.name as keyof MenuType] as string | number}
+            onChange={onChange}
+          />
+        ))}
+      </div>
     </RightInputStyled>
   );
 }
@@ -34,12 +43,34 @@ const RightInputStyled = styled.div`
 
   .input {
     padding: 8px 16px;
-    width: 613px;
+    width: 448px;
     background: #f5f5f7;
 
     input {
-      width: 570px;
+      width: 412px;
       background: #f5f5f7;
     }
+  }
+
+  .input_small {
+    padding: 8px 16px;
+    width: 122px;
+    background: #f5f5f7;
+
+    input {
+      width: 83px;
+      background: #f5f5f7;
+    }
+  }
+
+  .small-inputs-wrapper {
+    display: flex;
+    gap: 8px;
+  }
+  select {
+    background: #f5f5f7;
+    border: none;
+    appearance: none;
+    width: 90px;
   }
 `;

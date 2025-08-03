@@ -1,5 +1,6 @@
 import { MdDeleteForever } from "react-icons/md";
 import styled from "styled-components";
+import Sticker from "./Sticker";
 
 type BasketCardType = {
   title: string;
@@ -11,6 +12,7 @@ type BasketCardType = {
   isAdmin: boolean;
   onEditBasket: () => void;
   isActive?: boolean;
+  isAdvertised : boolean;
 };
 
 export default function BasketCard({
@@ -23,13 +25,15 @@ export default function BasketCard({
   isAdmin,
   onEditBasket,
   isActive,
+  isAdvertised,
 }: BasketCardType) {
   return (
     <BasketCardStyled
       onClick={onEditBasket}
       className={`${isAdmin ? "click" : ""} ${isActive ? "active" : ""}`}
     >
-      <img src={img} alt={alt} />
+      <img src={img} alt={alt}></img>
+      {isAdvertised && <Sticker/>}
       <div className="info">
         <div className="left-info">
           <h3>{title}</h3>

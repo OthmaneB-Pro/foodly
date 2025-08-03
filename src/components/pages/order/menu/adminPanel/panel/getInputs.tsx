@@ -1,5 +1,7 @@
 import { BsFillCameraFill } from "react-icons/bs";
 import { FaHamburger } from "react-icons/fa";
+import { FiPackage } from "react-icons/fi";
+import { GoMegaphone } from "react-icons/go";
 import { MdOutlineEuro } from "react-icons/md";
 
 export const getInputs = [
@@ -23,6 +25,28 @@ export const getInputs = [
     Icon: <MdOutlineEuro />,
     type: "text",
     name: "price",
-    className: "input",
+    className: "input_small",
+  },
+  {
+    placeholder: "",
+    Icon: <FiPackage />,
+    type: "select",
+    name: "isAvailable",
+    className: "input_small",
+    options: [
+      { label: "En stock", value: "true" },
+      { label: "En rupture", value: "false" },
+    ],
+  },
+  {
+    placeholder: "",
+    Icon: <GoMegaphone />,
+    type: "select",
+    name: "isAdvertised",
+    className: "input_small",
+    options: [
+      { label: "Sans pub", value: "false" },
+      { label: "Avec pub", value: "true" },
+    ],
   },
 ];

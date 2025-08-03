@@ -44,6 +44,7 @@ export default function BasketCardContainer() {
             onEditBasket={() => handleEditBasket(basketProduct)}
             isAdmin={isAdmin}
             isActive={basketProduct.id === activeCardId}
+            isAdvertised={cardData.isAdvertised}
           />
         );
       })}

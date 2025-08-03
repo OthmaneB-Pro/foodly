@@ -1,7 +1,6 @@
 export function formatPrice(priceToFormat: number | string): string {
   let price = priceToFormat;
 
-  // @TODO: perhaps change this to if(!price) return 0
   if (!price) return "0,00 €";
   price = replaceFrenchCommaWithDot(price);
 
@@ -15,4 +14,9 @@ export function formatPrice(priceToFormat: number | string): string {
 export function replaceFrenchCommaWithDot(price: string | number): number {
   if (typeof price === "string") price = parseFloat(price.replace(",", "."));
   return price;
+}
+
+export function convertStringToBoolean(input : string) {
+  if (typeof input === "boolean") return input
+  return input === "true"
 }

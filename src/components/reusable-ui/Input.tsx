@@ -3,13 +3,16 @@ import { theme } from "../../theme";
 
 type inputType = {
   value: string | number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
   placeholder: string;
   type: string;
   required?: boolean;
   Icon: React.ReactNode;
   className?: string;
   name?: string;
+  options?: { label: string; value: string }[];
 };
 
 export default function Input({
@@ -21,18 +24,34 @@ export default function Input({
   Icon,
   className,
   name,
+  options,
 }: inputType) {
   return (
     <InputValueStyled className={className}>
       <div className="icon">{Icon && Icon}</div>
-      <input
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        type={type}
-        name={name}
-        required={required}
-      />
+      {options ? (
+        <select
+          name={name}
+          value={String(value)}
+          onChange={onChange}
+          required={required}
+        >
+          {options.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          type={type}
+          name={name}
+          required={required}
+        />
+      )}
     </InputValueStyled>
   );
 }
