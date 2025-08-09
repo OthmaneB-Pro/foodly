@@ -7,7 +7,7 @@ type UserType = {
 
 export const registerUser = async (userData : UserType) => {
     try{
-        const res = await axios.post('http://localhost/8080/user/register', userData)
+        const res = await axios.post('http://localhost:8080/auth/register', userData)
         return res.data;
     }
     catch(err){
@@ -16,3 +16,13 @@ export const registerUser = async (userData : UserType) => {
     }
 }
 
+export const loginUser = async (userData : UserType) => {
+    try{
+        const res = await axios.post('http://localhost:8080/auth/login', userData)
+        return res.data;
+    }
+    catch(err){
+        console.error("Erreur lors de la connexion", err);
+        throw err;
+    }
+}
