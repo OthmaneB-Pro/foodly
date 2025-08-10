@@ -24,6 +24,7 @@ export default function OrderPage() {
     handleDelete,
     handleAddBasket,
     handleDeleteBasket,
+    loading,
   } = useMenuProduct();
 
   const MenuContextValue = {
@@ -45,6 +46,7 @@ export default function OrderPage() {
     setBasket,
     handleAddBasket,
     handleDeleteBasket,
+    loading
   };
 
   return (

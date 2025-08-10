@@ -23,7 +23,7 @@ export default function LoginForm() {
       await registerUser(user);
       navigate(`/order/${user.username}`);
     } catch (err) {
-      console.log(err);
+      console.log("L'utilisateur à déjà un compte ", err);
       try {
         await loginUser(user);
         navigate(`/order/${user.username}`);

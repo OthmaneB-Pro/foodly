@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { MenuType } from "../fakeData/MenuType";
+import { getListMenu } from "../api/menuApi";
 import { fakeMenu2 } from "../fakeData/fakeMenu";
 
 export const useMenuProduct = () => {
-  const [menu, setMenu] = useState(fakeMenu2);
+  const [menu, setMenu] = useState<MenuType[]>(fakeMenu2);
   const [basket, setBasket] = useState<MenuType[]>([]);
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    const fetchMenu = async () => {
+      try {
+        setLoading(true);
+        await getListMenu(setMenu); 
+      } catch (err) {
+        console.error("Erreur récupération menu :", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMenu();
+  }, []);
 
   const handleAdd = (inputValues: MenuType) => {
     const newMenu = [inputValues, ...menu];
@@ -49,5 +66,6 @@ export const useMenuProduct = () => {
     handleDelete,
     handleAddBasket,
     handleDeleteBasket,
+    loading,
   };
 };
