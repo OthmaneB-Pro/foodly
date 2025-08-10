@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { MenuType } from "../fakeData/MenuType";
 import { deleteMenu, getListMenu } from "../api/menuApi";
-import { addCartToOrder } from "../api/orderApi";
+import { addCartToOrder, deleteCartOrder, getCartOrder } from "../api/orderApi";
 
 export const useMenuProduct = () => {
   const [menu, setMenu] = useState<MenuType[]>([]);
@@ -13,6 +13,7 @@ export const useMenuProduct = () => {
       try {
         setLoading(true);
         getListMenu(setMenu);
+        getCartOrder(setBasket);
       } catch (err) {
         console.error("Erreur récupération menu :", err);
       } finally {
@@ -52,7 +53,7 @@ export const useMenuProduct = () => {
     setBasket(newBasket);
     addCartToOrder({
       userId: 15,
-      menuId: 5,
+      menuId: product.id,
       quantity: 1,
     });
   };
@@ -63,6 +64,7 @@ export const useMenuProduct = () => {
       (product) => product.id !== idProduct
     );
     setBasket(deleteProductBasket);
+    deleteCartOrder(idProduct);
   };
 
   return {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { MenuType } from "../fakeData/MenuType";
 
 type CartOrderType = {
   userId: number | null;
@@ -25,4 +26,33 @@ export const addCartToOrder = async ({
   }
 };
 
+export const getCartOrder = async (
+  setBasket: React.Dispatch<React.SetStateAction<MenuType[]>>
+) => {
+  try {
+    const res = await axios.get("http://localhost:8080/cart", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setBasket(res.data[0].items);
+  } catch (err) {
+    console.log("Erreur lors de la récupération du panier", err);
+  }
+};
 
+export const deleteCartOrder = async (itemId: number) => {
+  try {
+    const res = await axios.delete(
+      `http://localhost:8080/cart/item/${itemId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("delete", res.data);
+  } catch (err) {
+    console.log("Erreur lors de la suppresion de l'élément du panier", err);
+  }
+};
