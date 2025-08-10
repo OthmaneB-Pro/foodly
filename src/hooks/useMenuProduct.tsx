@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { MenuType } from "../fakeData/MenuType";
-import { getListMenu } from "../api/menuApi";
+import { deleteMenu, getListMenu } from "../api/menuApi";
+import { addCartToOrder } from "../api/orderApi";
 
 export const useMenuProduct = () => {
   const [menu, setMenu] = useState<MenuType[]>([]);
@@ -32,11 +33,12 @@ export const useMenuProduct = () => {
   const handleDelete = (idProduct: number) => {
     const newMenu = menu.filter((product) => product.id !== idProduct);
     const newBasket = basket.filter((product) => product.id !== idProduct);
+    deleteMenu(idProduct);
     setMenu(newMenu);
     setBasket(newBasket);
   };
 
-  const handleAddBasket = (product: MenuType) => {
+  const handleAddBasket = async (product: MenuType) => {
     const existingProduct = basket.find((item) => item.id === product.id);
     if (existingProduct) {
       const updatedBasket = basket.map((item) =>
@@ -48,6 +50,11 @@ export const useMenuProduct = () => {
     const basketCopy = [...basket];
     const newBasket = [product, ...basketCopy];
     setBasket(newBasket);
+    addCartToOrder({
+      userId: 15,
+      menuId: 5,
+      quantity: 1,
+    });
   };
 
   const handleDeleteBasket = (idProduct: number) => {

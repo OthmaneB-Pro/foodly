@@ -33,3 +33,25 @@ export const loginUser = async (userData: UserType) => {
 export const logout = () => {
   localStorage.removeItem("jwt");
 };
+
+export const getUserIdFromUsername = async (username: string): Promise<number | null> => {
+  try {
+    const res = await axios.get(`http://localhost:8080/user/idByUsername/${username}`);
+    return res.data;
+  } catch (err) {
+    console.error("Erreur récupération userId", err);
+    return null;
+  }
+};
+
+export const getUsernameFromToken = (): string | null => {
+  const token = localStorage.getItem("jwt");
+  if (!token) return null;
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.sub;
+  } catch {
+    return null;
+  }
+};
+
