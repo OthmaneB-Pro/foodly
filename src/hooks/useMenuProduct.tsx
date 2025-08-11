@@ -44,7 +44,8 @@ export const useMenuProduct = () => {
   const handleDelete = (idProduct: number) => {
     const newMenu = menu.filter((product) => product.id !== idProduct);
     const newBasket = basket.filter((product) => product.id !== idProduct);
-    deleteMenu(idProduct);
+     deleteMenu(idProduct);
+     console.log("idProduct : ", idProduct)
     deleteCartOrder(idProduct);
     setMenu(newMenu);
     setBasket(newBasket);

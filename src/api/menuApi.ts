@@ -54,7 +54,7 @@ export const deleteMenu = async (id: number) => {
   try {
     const res = await axios.delete(`http://localhost:8080/menu/${id}`, {
       headers: {
-        Authoratization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     console.log(res.data);
