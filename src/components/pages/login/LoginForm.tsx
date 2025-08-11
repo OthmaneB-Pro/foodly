@@ -35,6 +35,7 @@ export default function LoginForm() {
         console.log(err);
       }
     }
+    localStorage.setItem('user', JSON.stringify(userWithRole))
     setUser(userWithRole);
   };
   const handleChange = (

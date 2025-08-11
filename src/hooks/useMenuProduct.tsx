@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { MenuType } from "../fakeData/MenuType";
-import { deleteMenu, getListMenu } from "../api/menuApi";
+import { addProductToMenu, deleteMenu, getListMenu } from "../api/menuApi";
 import { addCartToOrder, deleteCartOrder, getCartOrder } from "../api/orderApi";
 
 export const useMenuProduct = () => {
@@ -29,6 +29,16 @@ export const useMenuProduct = () => {
   const handleAdd = (inputValues: MenuType) => {
     const newMenu = [inputValues, ...menu];
     setMenu(newMenu);
+    addProductToMenu({
+      user: { id: 15 },
+      id : inputValues.id,
+      title: inputValues.title,
+      imageSource: inputValues.imageSource,
+      price: inputValues.price,
+      quantity: 1,
+      isAdvertised: inputValues.isAdvertised,
+      isAvailable: inputValues.isAvailable,
+    });
   };
 
   const handleDelete = (idProduct: number) => {

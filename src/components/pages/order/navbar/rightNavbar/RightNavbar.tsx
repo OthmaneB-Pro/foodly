@@ -19,7 +19,7 @@ export default function RightNavbar() {
 
   return (
     <RightNavbarStyled>
-      {user.role == "ROLE_ADMIN" ? (
+      {user.role == "" ? (
         <ToggleButton
           labelIfUnchecked="Activer le mode Admin"
           labelIfChecked="Désactiver le mode admin"

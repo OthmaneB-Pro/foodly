@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { logout } from "../../../../../api/userApi";
-import { useContext } from "react";
-import { MenuContext } from "../../../../../context/MenuContext";
 
 export default function Profile() {
-  const { user } = useContext(MenuContext);
+  const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+  const username = storedUser.username;
   const navigate = useNavigate();
   const handleClick = () => {
     try {
@@ -20,7 +19,7 @@ export default function Profile() {
   return (
     <ProfileStyled>
       <p>
-        Hey, <span>{user.username}</span>
+        Hey, <span>{username}</span>
       </p>
       <button onClick={handleClick}>Se déconnecter</button>
     </ProfileStyled>
