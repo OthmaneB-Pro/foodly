@@ -62,3 +62,26 @@ export const deleteMenu = async (id: number) => {
     console.error("Erreur lors de la suppresion du produit", err);
   }
 };
+
+
+
+export const editProductOfMenu = async ({
+  id,
+  user,
+  title,
+  price,
+  imageSource,
+  isAvailable,
+  isAdvertised,
+}: ProductType) => {
+  try {
+    const res = await axios.put(
+      `http://localhost:8080/menu/${id}`,
+      { user, title, price, imageSource, isAvailable, isAdvertised },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    console.log(res.data);
+  } catch (err) {
+    console.error("Erreur lors de la modification du produit du menu", err);
+  }
+};
