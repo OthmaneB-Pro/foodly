@@ -7,3 +7,10 @@ export type MenuType = {
   isAvailable: boolean;
   isAdvertised: boolean;
 };
+
+
+export type User = {
+  username: string;
+  password: string;
+  role: string; 
+}

@@ -5,19 +5,22 @@ import OrderPage from "./components/pages/order/OrderPage";
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
 import { theme } from "./theme";
+import { MenuProvider } from "./context/MenuProvider";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppStyled>
-        <ToastContainer className="toaster" toastClassName="body-toast" />
-        <Routes>
-          <Route path={"/"} element={<LoginPage />} />
-          <Route path={"*"} element={<ErrorPage />} />
-          <Route path={`/order/:username`} element={<OrderPage />} />
-        </Routes>
-      </AppStyled>
-    </BrowserRouter>
+    <MenuProvider>
+      <BrowserRouter>
+        <AppStyled>
+          <ToastContainer className="toaster" toastClassName="body-toast" />
+          <Routes>
+            <Route path={"/"} element={<LoginPage />} />
+            <Route path={"*"} element={<ErrorPage />} />
+            <Route path={`/order/:username`} element={<OrderPage />} />
+          </Routes>
+        </AppStyled>
+      </BrowserRouter>
+    </MenuProvider>
   );
 }
 

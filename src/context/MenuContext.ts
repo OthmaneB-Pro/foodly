@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { MenuType } from "../fakeData/MenuType";
+import type { MenuType, User } from "../fakeData/MenuType";
 
 type MenuContextType = {
   isAdmin: boolean;
@@ -20,6 +20,9 @@ type MenuContextType = {
   setBasket: React.Dispatch<React.SetStateAction<MenuType[]>>;
   handleDeleteBasket: (idProduct: number) => void;
   handleAddBasket: (product: MenuType) => void;
+  loading: boolean;
+  user: User;
+  setUser: React.Dispatch<React.SetStateAction<User>>;
 };
 
 export const MenuContext = createContext<MenuContextType>({
@@ -41,4 +44,7 @@ export const MenuContext = createContext<MenuContextType>({
   setBasket: () => {},
   handleAddBasket: () => {},
   handleDeleteBasket: () => {},
+  loading: true,
+  user: { username: "", password: "", role: "" },
+  setUser: () => {},
 });

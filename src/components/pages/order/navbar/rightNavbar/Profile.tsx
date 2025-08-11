@@ -1,14 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { logout } from "../../../../../api/userApi";
 
-type ProfileType = {
-  username?: string;
-};
-export default function Profile({ username }: ProfileType) {
+export default function Profile() {
+  const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+  const username = storedUser.username;
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/`);
+    try {
+      logout();
+      navigate(`/`);
+    } catch (err) {
+      console.error("Erreur lors de la déconnexion", err);
+    }
   };
 
   return (
