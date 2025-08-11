@@ -35,6 +35,7 @@ export const useMenuProduct = () => {
     const newMenu = menu.filter((product) => product.id !== idProduct);
     const newBasket = basket.filter((product) => product.id !== idProduct);
     deleteMenu(idProduct);
+    deleteCartOrder(idProduct);
     setMenu(newMenu);
     setBasket(newBasket);
   };
@@ -42,29 +43,31 @@ export const useMenuProduct = () => {
   const handleAddBasket = async (product: MenuType) => {
     const existingProduct = basket.find((item) => item.id === product.id);
     if (existingProduct) {
-      const updatedBasket = basket.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      setBasket(
+        basket.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
       );
-      setBasket(updatedBasket);
-      return;
+      addCartToOrder({
+        userId: 15,
+        menuId: product.id,
+        quantity: 1,
+      });
+    } else {
+      setBasket([{ ...product, quantity: 1 }, ...basket]);
+      addCartToOrder({
+        userId: 15,
+        menuId: product.id,
+        quantity: 1,
+      });
     }
-    const basketCopy = [...basket];
-    const newBasket = [product, ...basketCopy];
-    setBasket(newBasket);
-    addCartToOrder({
-      userId: 15,
-      menuId: product.id,
-      quantity: 1,
-    });
   };
 
-  const handleDeleteBasket = (idProduct: number) => {
-    const basketCopy = [...basket];
-    const deleteProductBasket = basketCopy.filter(
-      (product) => product.id !== idProduct
-    );
-    setBasket(deleteProductBasket);
-    deleteCartOrder(idProduct);
+  const handleDeleteBasket = async (idProduct: number) => {
+    setBasket(basket.filter((p) => p.id !== idProduct));
+    await deleteCartOrder(idProduct);
   };
 
   return {
