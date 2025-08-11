@@ -7,12 +7,8 @@ import { useContext } from "react";
 import { toastNotification } from "./toastNotification";
 import { MenuContext } from "../../../../../context/MenuContext";
 
-type NavbarType = {
-  username?: string;
-};
-
-export default function RightNavbar({ username }: NavbarType) {
-  const { isAdmin, setIsAdmin } = useContext(MenuContext);
+export default function RightNavbar() {
+  const { isAdmin, setIsAdmin, user } = useContext(MenuContext);
 
   const handleToggle = () => {
     setIsAdmin(!isAdmin);
@@ -23,14 +19,18 @@ export default function RightNavbar({ username }: NavbarType) {
 
   return (
     <RightNavbarStyled>
-      <ToggleButton
-        labelIfUnchecked="Activer le mode Admin"
-        labelIfChecked="Désactiver le mode admin"
-        onToggle={handleToggle}
-        isChecked={isAdmin}
-      />
+      {user.role == "ROLE_ADMIN" ? (
+        <ToggleButton
+          labelIfUnchecked="Activer le mode Admin"
+          labelIfChecked="Désactiver le mode admin"
+          onToggle={handleToggle}
+          isChecked={isAdmin}
+        />
+      ) : (
+        <div className="role_admin"/>
+      )}
       <div className="profile">
-        <Profile username={username} />
+        <Profile />
         <FaUserCircle className="icon" />
       </div>
     </RightNavbarStyled>
@@ -52,5 +52,8 @@ const RightNavbarStyled = styled.div`
     margin-left: 10px;
     width: ${theme.fonts.P4};
     height: ${theme.fonts.P4};
+  }
+  .role_admin{
+    margin-left: 200px;
   }
 `;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
@@ -9,28 +9,33 @@ import { IoIosArrowForward } from "react-icons/io";
 import FormTitle from "./FormTitle";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { loginUser, registerUser } from "../../../api/userApi";
+import { MenuContext } from "../../../context/MenuContext";
 
 export default function LoginForm() {
-  const [user, setUser] = useState({
-    username: "",
-    password: "",
-  });
+  const { user, setUser } = useContext(MenuContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    let userWithRole;
+    if (user.username == "Othlazdoaz") {
+      userWithRole = { ...user, role: "ROLE_ADMIN" };
+    } else {
+      userWithRole = { ...user, role: "ROLE_USER" };
+    }
     try {
-      await registerUser(user);
+      await registerUser(userWithRole);
       navigate(`/order/${user.username}`);
     } catch (err) {
       console.log("L'utilisateur à déjà un compte ", err);
       try {
-        await loginUser(user);
+        await loginUser(userWithRole);
         navigate(`/order/${user.username}`);
       } catch (err) {
         console.log(err);
       }
     }
+    setUser(userWithRole);
   };
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>

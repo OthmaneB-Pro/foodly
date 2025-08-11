@@ -2,27 +2,25 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { logout } from "../../../../../api/userApi";
+import { useContext } from "react";
+import { MenuContext } from "../../../../../context/MenuContext";
 
-type ProfileType = {
-  username?: string;
-};
-export default function Profile({ username }: ProfileType) {
+export default function Profile() {
+  const { user } = useContext(MenuContext);
   const navigate = useNavigate();
   const handleClick = () => {
-    try{
+    try {
       logout();
       navigate(`/`);
+    } catch (err) {
+      console.error("Erreur lors de la déconnexion", err);
     }
-    catch(err){
-      console.error("Erreur lors de la déconnexion", err)
-    }
-    
   };
 
   return (
     <ProfileStyled>
       <p>
-        Hey, <span>{username}</span>
+        Hey, <span>{user.username}</span>
       </p>
       <button onClick={handleClick}>Se déconnecter</button>
     </ProfileStyled>

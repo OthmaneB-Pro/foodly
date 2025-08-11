@@ -3,15 +3,11 @@ import { theme } from "../../../../theme";
 import NavbarLogo from "./NavbarLogo";
 import RightNavbar from "./rightNavbar/RightNavbar";
 
-type NavbarType = {
-  username?: string;
-};
-
-export default function Navbar({ username }: NavbarType) {
+export default function Navbar() {
   return (
     <NavbarStyled>
       <NavbarLogo />
-      <RightNavbar username={username} />
+      <RightNavbar />
     </NavbarStyled>
   );
 }

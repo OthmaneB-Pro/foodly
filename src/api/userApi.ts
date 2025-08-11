@@ -3,6 +3,7 @@ import axios from "axios";
 type UserType = {
   username: string;
   password: string;
+  role : string;
 };
 
 export const registerUser = async (userData: UserType) => {
