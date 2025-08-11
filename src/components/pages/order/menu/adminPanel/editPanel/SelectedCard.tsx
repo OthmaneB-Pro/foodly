@@ -15,7 +15,7 @@ export default function SelectedCard() {
       (prevValues) => ({ ...prevValues, [name]: value } as MenuType)
     );
   };
- 
+
   return (
     <SelectedCardStyled>
       <ImagePreview imageSource={selectedProduct?.imageSource as string} />
