@@ -42,7 +42,7 @@ Comment créer une plateforme simple et efficace pour permettre aux utilisateurs
 
 ## Déploiement
 Foodly est déployé et accessible en ligne ici :  
-[https://foodly-okteispil-othmanes-projects-78cbd786.vercel.app](https://foodly-okteispil-othmanes-projects-78cbd786.vercel.app)
+[https://foodly-9n2bmbthm-othmanes-projects-78cbd786.vercel.app](https://foodly-9n2bmbthm-othmanes-projects-78cbd786.vercel.app)
 
 ## Structure du projet
 - **/src** : Contient tout le code source React et TypeScript.  
