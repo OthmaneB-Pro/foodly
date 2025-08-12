@@ -1,69 +1,55 @@
-# React + TypeScript + Vite
+# Foodly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description du projet
+**Foodly** est une application web qui permet aux utilisateurs de découvrir et commander des plats de qualité en toute simplicité. L’application offre une interface intuitive pour naviguer dans le menu, gérer un panier, et, pour les administrateurs, éditer les produits.
 
-Currently, two official plugins are available:
+### Problématique
+Comment créer une plateforme simple et efficace pour permettre aux utilisateurs de consulter un menu interactif, passer des commandes, et pour les administrateurs de gérer facilement les produits proposés ?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Fonctionnalités principales
+- **Navigation dans le menu :** Affichage des plats disponibles avec détails (prix, image, disponibilité).  
+- **Gestion du panier :** Ajout et suppression de produits, visualisation du total.  
+- **Espace administrateur :** Modification et suppression des produits, ajout de nouveaux plats.  
+- **Interface réactive et responsive :** Adaptée à tous types d’appareils (mobiles, tablettes, desktop).  
+- **Connexion utilisateur :** Gestion de l’authentification et des rôles (admin, client).
 
-## Expanding the ESLint configuration
+## Technologies utilisées
+- **React & TypeScript :** Construction de l’interface utilisateur et gestion des états.  
+- **Axios :** Gestion des appels API REST pour la communication avec le backend.  
+- **Styled-Components :** Pour un style dynamique et modulaire des composants.  
+- **Vite :** Outil de build et développement rapide.  
+- **Backend :** Spring Boot (Java) pour l’API REST (indépendant du front-end).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation et exécution
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clonez ce dépôt sur votre machine locale :  
+    ```bash
+    git clone https://github.com/OthmaneB-Pro/foodly.git
+    ```
+2. Accédez au répertoire du projet :  
+    ```bash
+    cd foodly
+    ```
+3. Installez les dépendances :  
+    ```bash
+    npm install
+    ```
+4. Lancez l’application en mode développement :  
+    ```bash
+    npm run dev
+    ```
+    
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Déploiement
+Foodly est déployé et accessible en ligne ici :  
+[https://foodly-okteispil-othmanes-projects-78cbd786.vercel.app](https://foodly-okteispil-othmanes-projects-78cbd786.vercel.app)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Structure du projet
+- **/src** : Contient tout le code source React et TypeScript.  
+- **/src/components** : Composants React réutilisables et spécifiques aux pages.  
+- **/src/context** : Gestion des contextes React pour le state global.  
+- **/src/api** : Fichiers pour les appels API avec Axios.  
+- **/public** : Ressources statiques (images, icônes).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Résultat
+Foodly est une application conviviale et réactive qui permet aux utilisateurs de commander facilement leurs plats favoris tout en offrant aux administrateurs une gestion simple des menus. Son design responsive garantit une expérience fluide sur tous les types d’appareils.
