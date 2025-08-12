@@ -23,7 +23,7 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
     handleDelete,
     handleAddBasket,
     handleDeleteBasket,
-    loading,
+    // loading,
   } = useMenuProduct();
 
   const value = {
@@ -45,7 +45,7 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
     setBasket,
     handleAddBasket,
     handleDeleteBasket,
-    loading,
+    // loading,
     user,
     setUser,
   };

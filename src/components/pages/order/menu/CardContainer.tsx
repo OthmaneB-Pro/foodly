@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { MenuContext } from "../../../../context/MenuContext";
 import type { MenuType } from "../../../../fakeData/MenuType";
 import { theme } from "../../../../theme";
-import { editProductOfMenu } from "../../../../api/menuApi";
+// import { editProductOfMenu } from "../../../../api/menuApi";
 
 export default function CardContainer() {
   const {
@@ -25,16 +25,16 @@ export default function CardContainer() {
     setActiveCardId((prev) => (prev === product.id ? null : product.id));
     setMode("edit");
     setSelectedProduct(product);
-    editProductOfMenu({
-          user: { id: 15 },
-          id : product.id,
-          title: product.title,
-          imageSource: product.imageSource,
-          price: product.price,
-          quantity: 1,
-          isAdvertised: product.isAdvertised,
-          isAvailable: product.isAvailable,
-        });
+    // editProductOfMenu({
+    //       user: { id: 15 },
+    //       id : product.id,
+    //       title: product.title,
+    //       imageSource: product.imageSource,
+    //       price: product.price,
+    //       quantity: 1,
+    //       isAdvertised: product.isAdvertised,
+    //       isAvailable: product.isAvailable,
+    //     });
     setIsPanelOpen(true);
   };
 
