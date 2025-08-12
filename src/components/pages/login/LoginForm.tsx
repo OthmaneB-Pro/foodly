@@ -8,7 +8,7 @@ import Button from "../../reusable-ui/Button";
 import { IoIosArrowForward } from "react-icons/io";
 import FormTitle from "./FormTitle";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { loginUser, registerUser } from "../../../api/userApi";
+// import { loginUser, registerUser } from "../../../api/userApi";
 import { MenuContext } from "../../../context/MenuContext";
 
 export default function LoginForm() {
@@ -17,26 +17,26 @@ export default function LoginForm() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let userWithRole;
-    if (user.username == "Othlazdoaz") {
-      userWithRole = { ...user, role: "ROLE_ADMIN" };
-    } else {
-      userWithRole = { ...user, role: "ROLE_USER" };
-    }
-    try {
-      await registerUser(userWithRole);
+    // let userWithRole;
+    // if (user.username == "Othlazdoaz") {
+    //   userWithRole = { ...user, role: "ROLE_ADMIN" };
+    // } else {
+    //   userWithRole = { ...user, role: "ROLE_USER" };
+    // }
+    // try {
+    //   await registerUser(userWithRole);
       navigate(`/order/${user.username}`);
-    } catch (err) {
-      console.log("L'utilisateur à déjà un compte ", err);
-      try {
-        await loginUser(userWithRole);
-        navigate(`/order/${user.username}`);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    localStorage.setItem('user', JSON.stringify(userWithRole))
-    setUser(userWithRole);
+    // } catch (err) {
+    //   console.log("L'utilisateur à déjà un compte ", err);
+    //   try {
+    //     await loginUser(userWithRole);
+    //     navigate(`/order/${user.username}`);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
+    // localStorage.setItem('user', JSON.stringify(userWithRole))
+    // setUser(userWithRole);
   };
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
