@@ -2,10 +2,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { logout } from "../../../../../api/userApi";
+import { useContext } from "react";
+import { MenuContext } from "../../../../../context/MenuContext";
 
 export default function Profile() {
-  const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
-  const username = storedUser.username;
+  // const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+  // const username = storedUser.username;
+  const {user} = useContext(MenuContext)
   const navigate = useNavigate();
   const handleClick = () => {
     try {
@@ -15,11 +18,12 @@ export default function Profile() {
       console.error("Erreur lors de la déconnexion", err);
     }
   };
+  console.log('username : ', user.username)
 
   return (
     <ProfileStyled>
       <p>
-        Hey, <span>{username}</span>
+        Hey, <span>{user.username}</span>
       </p>
       <button onClick={handleClick}>Se déconnecter</button>
     </ProfileStyled>

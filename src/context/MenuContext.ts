@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import type { MenuType, User } from "../fakeData/MenuType";
 
-type MenuContextType = {
+export type MenuContextType = {
   isAdmin: boolean;
   setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
   mode: "add" | "edit";
