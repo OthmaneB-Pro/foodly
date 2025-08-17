@@ -18,7 +18,6 @@ export default function Profile() {
       console.error("Erreur lors de la déconnexion", err);
     }
   };
-  console.log('username : ', user.username)
 
   return (
     <ProfileStyled>
